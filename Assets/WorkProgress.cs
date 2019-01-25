@@ -11,14 +11,14 @@ public class WorkProgress : MonoBehaviour
 
 	// Start is called before the first frame update
 	void Start()
-    {
+	{
 		bar = Instantiate(barPrefab, FindObjectOfType<WorldSpaceUi>().GetComponent<Canvas>().transform).GetComponent<Image>();
-    }
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-		bar.transform.position = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 1f);
+	// Update is called once per frame
+	void Update()
+	{
+		bar.transform.position = Camera.main.WorldToScreenPoint(transform.position) + Vector3.up * 25f;
 		bar.fillAmount = FillAmount;
-    }
+	}
 }
