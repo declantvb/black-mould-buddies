@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Interactor : MonoBehaviour
@@ -24,7 +25,7 @@ public class Interactor : MonoBehaviour
 			{
 				var colliders = Physics.OverlapSphere(myTransform.position + myTransform.forward, 1);
 
-				foreach (var collider in colliders)
+				foreach (var collider in colliders.OrderBy(c => (myTransform.position + myTransform.forward - c.transform.position).sqrMagnitude))
 				{
 					IInteractible interactible = collider.GetComponentInParent<IInteractible>();
 					if (interactible != null)
