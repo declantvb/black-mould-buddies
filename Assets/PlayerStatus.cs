@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
 {
-    const int MAX_STRESS = 100;
-    const float LIFE_STRESS_TIME = 2;
+    public const int MAX_STRESS = 100;
+    public const float LIFE_STRESS_TIME = 0.2f;
 
-    int stress;
+    public int stress;
     float lifeStressTimer = LIFE_STRESS_TIME;
 
     // Start is called before the first frame update
