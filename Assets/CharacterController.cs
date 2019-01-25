@@ -43,8 +43,8 @@ public class CharacterController : MonoBehaviour
 		{
 			var rotationAngle = Quaternion.LookRotation(moveVector, Vector3.up);
 			// update Character position and rotation
-			myTransform.rotation = Quaternion.RotateTowards(myTransform.rotation, rotationAngle, 500f * Time.deltaTime);
-			myTransform.position = myTransform.position + myTransform.forward * movementSpeed * Time.deltaTime;
+			myTransform.rotation = Quaternion.RotateTowards(myTransform.rotation, rotationAngle, 500f * Time.fixedDeltaTime);
+			myTransform.position = myTransform.position + myTransform.forward * movementSpeed * Time.fixedDeltaTime;
 		}
 	}
 }
