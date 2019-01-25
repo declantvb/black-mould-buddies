@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class Director : MonoBehaviour
 {
-	public IInteractible[] Interactibles { get; set; }
-	public float TimeUntilNextBreak { get; set; } = 0;
+	public IInteractible[] Interactibles;
+	public float TimeBetweenBreaks = 10;
+
+	public float TimeUntilNextBreak = 0;
 
 	void Start()
 	{
@@ -15,9 +17,10 @@ public class Director : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		if (TimeUntilNextBreak == 0)
+		TimeUntilNextBreak -= Time.fixedDeltaTime;
+		if (TimeUntilNextBreak <= 0)
 		{
-			TimeUntilNextBreak = 15 * 1000;
+			TimeUntilNextBreak = TimeBetweenBreaks;
 
 			var inter = Interactibles[Random.Range(0, Interactibles.Length - 1)];
 			inter.Break();

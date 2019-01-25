@@ -2,6 +2,6 @@
 {
 	string[] GetInteractions();
 
-	void Interact(string type);
+	bool Interact(string type, float workAmount);
 	void Break();
 }

@@ -4,45 +4,54 @@ using UnityEngine;
 
 public class TestInteractible : MonoBehaviour, IInteractible
 {
-	private bool broken;
-	private MeshRenderer myRenderer;
+	public float WorkRequired = 3;
 
-	// Start is called before the first frame update
+	public bool broken;
+	public float work;
+	private MeshRenderer myRenderer;
+		
 	void Start()
     {
-		myRenderer = this.GetComponent<MeshRenderer>();
-        
+		myRenderer = this.GetComponent<MeshRenderer>();        
     }
 
-    // Update is called once per frame
     void Update()
     {
 		myRenderer.material.color = broken ? Color.red : Color.blue;
     }
 
-	string[] IInteractible.GetInteractions()
+	public string[] GetInteractions()
 	{
 		return new string[] { "test" };
 	}
 
-	public void Interact(string type)
+	public bool Interact(string type, float workAmount)
 	{
 		switch (type)
 		{
 			case "test":
 				if (broken)
 				{
-					Debug.Log("i got fixed :O");
-					broken = false; 
+					work -= workAmount;
+					if (work <= 0)
+					{
+						Debug.Log("i got fixed :O");
+						broken = false;
+						return true;
+					}
 				}
 				break;
 			default:
+				Debug.Log($"why do {type}");
 				break;
 		}
+
+		return false;
 	}
 
 	public void Break()
 	{
 		broken = true;
+		work = WorkRequired;
 	}
 }

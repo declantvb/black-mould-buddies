@@ -30,9 +30,10 @@ public class Interactor : MonoBehaviour
 					IInteractible interactible = collider.GetComponentInParent<IInteractible>();
 					if (interactible != null)
 					{
-						//currentList = interactible.GetInteractions();
-						interactible.Interact("test");
-						clicked = true;
+						currentList = interactible.GetInteractions();
+						Debug.Log("current list : " + string.Join(",", currentList));
+						var complete = interactible.Interact(currentList[0], Time.deltaTime);
+						clicked = complete;
 						break;
 					}
 				} 
@@ -42,10 +43,5 @@ public class Interactor : MonoBehaviour
 		{
 			clicked = false;
 		}
-
-		//if (currentList != null)
-		//{
-		//	Debug.Log("current list : " + string.Join(",", currentList));
-		//}
 	}
 }
