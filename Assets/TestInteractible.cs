@@ -9,15 +9,19 @@ public class TestInteractible : MonoBehaviour, IInteractible
 	public bool broken;
 	public float work;
 	private MeshRenderer myRenderer;
-		
+	private WorkProgress ui;
+
 	void Start()
     {
-		myRenderer = this.GetComponent<MeshRenderer>();        
+		myRenderer = this.GetComponent<MeshRenderer>();
+		ui = GetComponent<WorkProgress>();
+		work = WorkRequired;
     }
 
     void Update()
     {
 		myRenderer.material.color = broken ? Color.red : Color.blue;
+		ui.FillAmount = broken ? Mathf.Clamp(work / WorkRequired, 0, 1) : 0;
     }
 
 	public string[] GetInteractions()
@@ -32,9 +36,10 @@ public class TestInteractible : MonoBehaviour, IInteractible
 			case "test":
 				if (broken)
 				{
-					work -= workAmount;
-					if (work <= 0)
+					work += workAmount;
+					if (work >= WorkRequired)
 					{
+						work = WorkRequired;
 						Debug.Log("i got fixed :O");
 						broken = false;
 						return true;
@@ -52,6 +57,6 @@ public class TestInteractible : MonoBehaviour, IInteractible
 	public void Break()
 	{
 		broken = true;
-		work = WorkRequired;
+		work = 0;
 	}
 }
