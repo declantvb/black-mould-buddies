@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TestInteractible : MonoBehaviour, IInteractible
 {
-	private bool state;
+	private bool broken;
 	private MeshRenderer myRenderer;
 
 	// Start is called before the first frame update
@@ -17,7 +17,7 @@ public class TestInteractible : MonoBehaviour, IInteractible
     // Update is called once per frame
     void Update()
     {
-		myRenderer.material.color = state ? Color.red : Color.blue;
+		myRenderer.material.color = broken ? Color.red : Color.blue;
     }
 
 	string[] IInteractible.GetInteractions()
@@ -30,12 +30,19 @@ public class TestInteractible : MonoBehaviour, IInteractible
 		switch (type)
 		{
 			case "test":
-				//todo
-				Debug.Log("i got touched :O");
-				state = !state;
+				if (broken)
+				{
+					Debug.Log("i got fixed :O");
+					broken = false; 
+				}
 				break;
 			default:
 				break;
 		}
+	}
+
+	public void Break()
+	{
+		broken = true;
 	}
 }
