@@ -46,20 +46,5 @@ public class CharacterController : MonoBehaviour
 			myTransform.rotation = Quaternion.RotateTowards(myTransform.rotation, rotationAngle, 500f * Time.deltaTime);
 			myTransform.position = myTransform.position + myTransform.forward * movementSpeed * Time.deltaTime;
 		}
-
-	}
-
-	float ClampAngle(float theAngle)
-	{
-		if (theAngle < -360.0f)
-		{
-			theAngle += 360.0f;
-		}
-		else if (theAngle > 360.0f)
-		{
-			theAngle -= 360.0f;
-		}
-
-		return theAngle;
 	}
 }
