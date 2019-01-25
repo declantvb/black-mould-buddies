@@ -32,6 +32,7 @@ public class Interactor : MonoBehaviour
 					{
 						currentList = interactible.GetInteractions();
 						Debug.Log("current list : " + string.Join(",", currentList));
+
 						var complete = interactible.Interact(currentList[0], Time.deltaTime);
 						clicked = complete;
 						break;
