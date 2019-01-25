@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
+	string player = "";
 	float movementSpeed = 5.0f;
 	float rotationSpeed = 5.0f;
 
@@ -26,8 +27,8 @@ public class CharacterController : MonoBehaviour
 	void FixedUpdate()
 	{
 		// get inputs
-		var inputX = Input.GetAxis("Horizontal");
-		var inputY = Input.GetAxis("Vertical");
+		var inputX = Input.GetAxis("Horizontal" + player);
+		var inputY = Input.GetAxis("Vertical" + player);
 		//var inputR = Mathf.Clamp(Input.GetAxis("Mouse X"), -1.0f, 1.0f);
 
 		// get current position and rotation, then do calculations
