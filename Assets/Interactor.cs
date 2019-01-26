@@ -18,7 +18,7 @@ public class Interactor : MonoBehaviour
 	private IInteractible interactible;
 	private bool selectChanged;
 	private GameObject[] menuOptions;
-	private int selectedItem;
+	private int selectedItem = -1;
 
 	// Start is called before the first frame update
 	void Start()
@@ -36,26 +36,36 @@ public class Interactor : MonoBehaviour
 			{
 				if (!menuOpen)
 				{
-					var colliders = Physics.OverlapSphere(myTransform.position + myTransform.forward, 2);
-
-					foreach (var collider in colliders.OrderBy(c => (myTransform.position + myTransform.forward - c.transform.position).sqrMagnitude))
+					if (selectedItem >= 0)
 					{
-						interactible = collider.GetComponentInParent<IInteractible>();
-						if (interactible != null)
+						var complete = interactible.Interact(currentList[selectedItem], Time.deltaTime);
+						if (complete)
 						{
-							currentList = interactible.GetInteractions();
-
-							buildmenu();
 							clicked = true;
+							selectedItem = -1;
+						}
+					}
+					else
+					{
+						var colliders = Physics.OverlapSphere(myTransform.position + myTransform.forward, 2);
+
+						foreach (var collider in colliders.OrderBy(c => (myTransform.position + myTransform.forward - c.transform.position).sqrMagnitude))
+						{
+							interactible = collider.GetComponentInParent<IInteractible>();
+							if (interactible != null)
+							{
+								currentList = interactible.GetInteractions();
+
+								buildmenu();
+								clicked = true;
+								break;
+							}
 						}
 					}
 				}
-				else
+				else 
 				{
-					var complete = interactible.Interact(currentList[selectedItem], Time.deltaTime);
-					clicked = complete;
 					destroymenu();
-					clicked = true;
 				}
 			}
 		}
