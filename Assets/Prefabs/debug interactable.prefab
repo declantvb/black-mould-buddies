@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6971808041816651708}
   - component: {fileID: 6971808041816651696}
   - component: {fileID: 2603186277992467485}
+  - component: {fileID: 8776241705786452931}
   m_Layer: 0
   m_Name: debug interactable
   m_TagString: Untagged
@@ -103,12 +104,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6971808041816651709}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce26885c30092ff44930452f24bca141, type: 3}
+  m_Script: {fileID: 11500000, guid: aad020c8b6fbe0e408706a1d2dcf9e4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorkRequired: 3
-  broken: 0
-  work: 0
+  WorkRequired: 0
+  WorkDone: 0
+  CurrentInteraction: {fileID: 0}
 --- !u!114 &2603186277992467485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +124,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barPrefab: {fileID: 3211470220267178308, guid: 639241a6c7b002b4d9c51101833a2d47,
     type: 3}
+  FillAmount: 1
+--- !u!114 &8776241705786452931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6971808041816651709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af22082cde1544841b92182072a47e47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Fix
+  Cost: 1
+  Work: 3
 --- !u!1 &6971808041943908372
 GameObject:
   m_ObjectHideFlags: 0
