@@ -63,6 +63,10 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 				household.Money -= type.Cost;
 				CurrentInteraction = type;
 			}
+			else
+			{
+				return false;
+			}
 		}
 
 		CurrentInteraction?.DoWork(status, workAmount);

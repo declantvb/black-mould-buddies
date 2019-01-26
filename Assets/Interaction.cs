@@ -70,6 +70,9 @@ public class Interaction : MonoBehaviour
 			case InteractionType.Food:
 				status.needFood = 0;
 				break;
+			case InteractionType.Drink:
+				status.removeStress(20);
+				break;
 			case InteractionType.None:
 				break;
 			default:
@@ -84,6 +87,7 @@ public class Interaction : MonoBehaviour
 		Bladder,
 		Food,
 		Chill,
-		Sleep
+		Sleep,
+		Drink
 	}
 }
