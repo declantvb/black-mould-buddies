@@ -10,8 +10,8 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 		public static ObjectState Good = new ObjectState { Name = "Good" };
 	}
 
+	public string ObjectName;
 	public Interaction CurrentInteraction;
-
 	public ObjectState State = States.Good;
 
 	//private MeshRenderer[] myRenderers;
@@ -19,6 +19,8 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	private Household household;
 	private ParticleSystem ps;
 	private WorkProgress ui;
+
+	public string Name => ObjectName;
 
 	void Start()
 	{

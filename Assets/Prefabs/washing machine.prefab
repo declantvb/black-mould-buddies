@@ -4711,6 +4711,7 @@ GameObject:
   - component: {fileID: 8022539682291012817}
   - component: {fileID: 8022539682291012818}
   - component: {fileID: 8022539682291012819}
+  - component: {fileID: 1184997272}
   m_Layer: 0
   m_Name: washing machine
   m_TagString: Untagged
@@ -4774,6 +4775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828cf6814930445dfa307b1fe2e6e858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ObjectName: Washing Machine
   CurrentInteraction: {fileID: 0}
 --- !u!114 &8022539682291012819
 MonoBehaviour:
@@ -4790,6 +4792,22 @@ MonoBehaviour:
   Name: Fix
   Cost: 1
   WorkRequired: 3
+  WorkDone: 0
+--- !u!114 &1184997272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8022539682291012828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af22082cde1544841b92182072a47e47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: asdas
+  Cost: 1
+  WorkRequired: 1
   WorkDone: 0
 --- !u!1001 &8022539680876472810
 PrefabInstance:
