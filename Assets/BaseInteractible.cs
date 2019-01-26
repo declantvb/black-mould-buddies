@@ -39,9 +39,11 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	void Update()
 	{
 		//myRenderer.material.color = State == States.Broken ? Color.red : Color.blue;
-		ui.FillAmount = CurrentInteraction != null
-			? Mathf.Clamp(CurrentInteraction.WorkDone / CurrentInteraction.WorkRequired, 0, 1)
-			: 0;
+		if (ui != null) {
+			ui.FillAmount = CurrentInteraction != null
+				? Mathf.Clamp(CurrentInteraction.WorkDone / CurrentInteraction.WorkRequired, 0, 1)
+				: 0;
+		}
 	}
 
 	public Interaction[] GetInteractions()

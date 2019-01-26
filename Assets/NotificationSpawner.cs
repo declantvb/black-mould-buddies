@@ -40,7 +40,7 @@ public class NotificationSpawner : MonoBehaviour
             yield return wait;
             timeLeft -= Time.deltaTime;
             var alpha = Mathf.Clamp(timeLeft, 0, 1);
-            notification.transform.position = notification.transform.position + new Vector3(0, Time.deltaTime * 10);
+            notification.transform.position = notification.transform.position + new Vector3(0, Time.deltaTime * 30);
             textObj.color = new Color(color.r, color.g, color.b, alpha);
         }
 

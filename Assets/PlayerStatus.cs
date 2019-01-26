@@ -20,12 +20,15 @@ public class PlayerStatus : MonoBehaviour
     float lifeStressTimer = LIFE_STRESS_TIME;
 	public bool chilling;
 	public bool sleeping;
-    private Household household;
+
+    public Household household;
+    private SpriteRenderer face;
 
     // Start is called before the first frame update
     void Start()
     {
         household = FindObjectsOfType<MonoBehaviour>().OfType<Household>().First();
+        face = transform.Find("FacialExpression").GetComponent<SpriteRenderer>();
     }
 
     private void FixedUpdate() {

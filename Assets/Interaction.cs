@@ -54,7 +54,7 @@ public class Interaction : MonoBehaviour
 		WorkDone = 0;
 	}
 
-	public void FinishWork(PlayerStatus status)
+	public virtual void FinishWork(PlayerStatus status)
 	{
 		switch (Type)
 		{
