@@ -16,6 +16,7 @@ public class Household : MonoBehaviour
     private Light[] lights;
     private bool lightsOut;
     public AudioSource AudioLight;
+    public AudioSource AudioLetter;
 
     // Start is called before the first frame update
     void Start()
@@ -42,11 +43,8 @@ public class Household : MonoBehaviour
 
         if (old != lightsOut)
         {
-            // do sound
             if (AudioLight != null)
-            {
                 AudioLight.Play();
-            }
         }
 
         foreach (var light in lights) {
@@ -68,6 +66,9 @@ public class Household : MonoBehaviour
 
         var rb = letter.GetComponent<Rigidbody>();
         rb.AddForceAtPosition(mailman.forward * 8 + Random.onUnitSphere * 2, rb.position + Random.onUnitSphere, ForceMode.VelocityChange);
+        
+        if (AudioLetter != null)
+            AudioLetter.Play();
     }
 
     private void DayPasses()

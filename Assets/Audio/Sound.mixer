@@ -27,6 +27,7 @@ AudioMixerController:
     - 9f28c279e920a7846a8230f502a6732d
     - 94f3a2dbb2d2036478b792000ce040cc
     - 2a7b3657ca882a843a7c14bb3d960bb0
+    - 906b68c5933e2d84884829f0c465d57f
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -48,6 +49,7 @@ AudioMixerGroupController:
   - {fileID: 243180913151275540}
   - {fileID: 243343585163033192}
   - {fileID: 243547713209013606}
+  - {fileID: 243142061837787514}
   m_Volume: d155bf38d4ee28b45a20da6c1f5f0fe0
   m_Pitch: dbb9759c73334d340be0f429de463124
   m_Effects:
@@ -118,6 +120,24 @@ AudioMixerGroupController:
   m_Pitch: 0cc01155e4c32814d8a31771a2156d09
   m_Effects:
   - {fileID: 244770665828576392}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &243142061837787514
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Letter
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 906b68c5933e2d84884829f0c465d57f
+  m_Children: []
+  m_Volume: e0ca331edf627a7438c7457c8739eeb1
+  m_Pitch: cd6ccc0cf4db5fc49941f340058f1eb0
+  m_Effects:
+  - {fileID: 244813603403209826}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -324,6 +344,20 @@ AudioMixerEffectController:
   m_EffectID: 8f467cb17377d034991cd1040ef09047
   m_EffectName: Attenuation
   m_MixLevel: 56e68a6aea02a4e4c988ea2b67ab43cf
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &244813603403209826
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 682a2d8737680d04f9bb5534febef5b4
+  m_EffectName: Attenuation
+  m_MixLevel: fb2883e35ba513d49b84353e4618661c
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
