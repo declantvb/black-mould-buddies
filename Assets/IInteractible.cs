@@ -1,4 +1,6 @@
-﻿public interface IInteractible
+﻿using System;
+
+public interface IInteractible
 {
 	string Name { get; }
 
@@ -8,7 +10,13 @@
 	void Break();
 }
 
+[Serializable]
 public class ObjectState
 {
-	public string Name { get; set; }
+	public string Name;
+
+	public override string ToString()
+	{
+		return Name;
+	}
 }

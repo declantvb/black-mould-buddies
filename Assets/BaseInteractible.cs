@@ -29,7 +29,7 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 		interactions = GetComponents<Interaction>();
 		household = FindObjectOfType<Household>();
 		ps = GetComponentInChildren<ParticleSystem>();
-		ps?.Stop();
+		ps.gameObject.SetActive(false);
 	}
 
 	void Update()
@@ -63,7 +63,8 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 			if (CurrentInteraction.Name == "Fix")
 			{
 				State = States.Good;
-				ps?.Stop(); 
+				ps.gameObject.SetActive(false);
+
 			}
 			CurrentInteraction?.ResetToDefaults();
 			CurrentInteraction = null;
@@ -76,6 +77,8 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	public virtual void Break()
 	{
 		State = States.Broken;
-		ps?.Play();
+		ps.gameObject.SetActive(true);
+
+		Debug.Log("playing");
 	}
 }
