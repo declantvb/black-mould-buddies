@@ -384,6 +384,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 01ed86b0436f14f7781f714edf8af14d, type: 3}
   - {fileID: 21300000, guid: a38bb1f4d4fba40ecab4f0040dc0c91e, type: 3}
   household: {fileID: 0}
+  face: {fileID: 0}
 --- !u!198 &3873512639094769553
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -457,7 +458,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -467,7 +468,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -520,7 +521,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -636,7 +637,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1012,7 +1013,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 10
+    angle: 50
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
