@@ -34,7 +34,7 @@ public class Interactor : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (!menuOpen && selectedItem >= 0 && currentList != null && selectedItem < currentList.Length)
+		if (!menuOpen && selectedItem >= 0)
 		{
 			if (!currentList[selectedItem].CanWork(mystatus))
 			{
@@ -117,9 +117,14 @@ public class Interactor : MonoBehaviour
 				var tempInteractible = collider.GetComponentInParent<BaseInteractible>();
 				if (tempInteractible != null)
 				{
-					interactible = tempInteractible;
-					currentList = interactible.GetInteractions();
+					currentList = tempInteractible.GetInteractions();
 
+					if (currentList.Length == 0) {
+						currentList = null;
+						return true;
+					}
+
+					interactible = tempInteractible;
 					buildmenu();
 					return true;
 				}
