@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerStatus : MonoBehaviour
 {
     public const int MAX_STRESS = 100;
-    public const float LIFE_STRESS_TIME = 2f;
+    public const float LIFE_STRESS_TIME = 0.02f;
 
     public const int NEED_TOILET_MAX = 13;
     public const int NEED_FOOD_MAX = 17;

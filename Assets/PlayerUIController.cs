@@ -31,8 +31,8 @@ public class PlayerUIController : MonoBehaviour
             stressBar.fillAmount = stressProportion;
             stressBar.color = new Color(stressProportion * 0.8f + 0.2f, (1 - stressProportion) * 0.8f + 0.2f, 0.2f);
 
-            toiletNeedImage.color = playerStatus.needToilet >= PlayerStatus.NEED_TOILET_MAX ? Color.white : lowColor;
-            foodNeedImage.color = playerStatus.needFood >= PlayerStatus.NEED_FOOD_MAX ? Color.white : lowColor;
+            toiletNeedImage.color = playerStatus.needToilet >= PlayerStatus.NEED_TOILET_MAX ? highColor : lowColor;
+            foodNeedImage.color = playerStatus.needFood >= PlayerStatus.NEED_FOOD_MAX ? highColor : lowColor;
         }
     }
 }
