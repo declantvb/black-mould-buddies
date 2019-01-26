@@ -66,9 +66,9 @@ public class PlayerStatus : MonoBehaviour
             m.startColor = stressRate > 0 ? Color.red : Color.green;
             particles.Emit(Mathf.Abs(stressRate));
 
-            var stressLevel = Mathf.Clamp(Mathf.FloorToInt(stress / (float)(MAX_STRESS+1) * stressLevelFaces.Length), 0, stressLevelFaces.Length - 1);
+            var stressLevel = Mathf.Clamp(Mathf.FloorToInt(stress / (float)(MAX_STRESS+1) * stressLevelFaces.Length), 0, stressLevelFaces.Length-1);
             face.sprite = stressLevelFaces[stressLevel];
-		}
+        }
 
 
         // Clamp to maximum stress
@@ -77,10 +77,10 @@ public class PlayerStatus : MonoBehaviour
         if (needFood > NEED_FOOD_MAX) needFood = NEED_FOOD_MAX;
     }
 
-	public void removeStress(int v)
+	public void removeStress(int amount)
 	{
-		stress -= 20;
-		if (stress < 0)
+		stress -= amount;
+		if (stress <= 0)
 		{
 			stress = 0;
 		}

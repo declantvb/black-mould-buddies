@@ -13,7 +13,11 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 
 	public string ObjectName;
 	public bool Breakable = false;
+
 	public Interaction CurrentInteraction;
+	public PlayerStatus CurrentPlayer;
+	public float interactionTimeout;
+
 	public ObjectState State = States.Good;
 	public Transform lockPosition;
 	public AudioSource AudioBreak;
@@ -44,6 +48,13 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 
 	void Update()
 	{
+		interactionTimeout -= Time.deltaTime;
+
+		if (interactionTimeout < 0)
+		{
+			CurrentPlayer = null;
+		}
+
 		//myRenderer.material.color = State == States.Broken ? Color.red : Color.blue;
 		if (null != ui) {
 			ui.FillAmount = (CurrentInteraction != null && !CurrentInteraction.Continuous)
@@ -61,6 +72,11 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 
 	public bool Interact(PlayerStatus status, Interaction type, float workAmount)
 	{
+		if (CurrentPlayer != status && interactionTimeout > 0)
+		{
+			return false;
+		}
+
 		if (type != CurrentInteraction)
 		{
 			CurrentInteraction?.ResetToDefaults();
@@ -68,12 +84,14 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 			{
 				household.Money -= type.Cost;
 				CurrentInteraction = type;
+				CurrentPlayer = status;
 			}
 			else
 			{
 				return false;
 			}
 		}
+		interactionTimeout = 1;
 
 		CurrentInteraction?.DoWork(status, workAmount);
 
@@ -101,6 +119,7 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 		}
 		CurrentInteraction.ResetToDefaults();
 		CurrentInteraction = null;
+		CurrentPlayer = null;
 	}
 
 	public virtual void Break()
@@ -121,6 +140,7 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 			EndCleanupInteraction(status);
 		}
 		CurrentInteraction = null;
+		CurrentPlayer = null;
 	}
 
 	private IEnumerator FadeOut(AudioSource audioSource, float FadeTime)

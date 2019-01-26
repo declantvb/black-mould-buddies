@@ -60,7 +60,7 @@ public class Interactor : MonoBehaviour
 			}
 		}
 
-		if (Input.GetAxis("Fire1" + myplayer.Player) > 0)
+		if (Input.GetAxis("Fire" + myplayer.Player) > 0)
 		{
 			if (!clicked)
 			{

@@ -1,5 +1,104 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6133980750143190000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1018656683858508249}
+  - component: {fileID: 1971913971666212463}
+  - component: {fileID: 6273129118656206267}
+  - component: {fileID: 4801136785898622931}
+  - component: {fileID: 6641034468274034261}
+  m_Layer: 0
+  m_Name: right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1018656683858508249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6133980750143190000}
+  m_LocalRotation: {x: 0.00000008940696, y: 0.71604246, z: 0.6980569, w: 0.000000029802319}
+  m_LocalPosition: {x: 1.22, y: 1.8179992, z: -0.94400066}
+  m_LocalScale: {x: 1.0000006, y: 1.0000006, z: 1.0000005}
+  m_Children: []
+  m_Father: {fileID: 7016761005775681653}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: -88.54301, y: 180.00002, z: 0}
+--- !u!114 &1971913971666212463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6133980750143190000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba7025970585c7c4e918c2cecd6d02c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barPrefab: {fileID: 3211470220267178308, guid: 639241a6c7b002b4d9c51101833a2d47,
+    type: 3}
+  FillAmount: 1
+--- !u!114 &6273129118656206267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6133980750143190000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 828cf6814930445dfa307b1fe2e6e858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectName: Bed
+  Breakable: 0
+  CurrentInteraction: {fileID: 0}
+  State:
+    Name: Good
+  lockPosition: {fileID: 1018656683858508249}
+--- !u!114 &4801136785898622931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6133980750143190000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af22082cde1544841b92182072a47e47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Sleep
+  Cost: 0
+  WorkRequired: 0
+  WorkDone: 0
+  Continuous: 1
+  MaxStress: 100
+  Type: 4
+--- !u!65 &6641034468274034261
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6133980750143190000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 4, z: 1}
+  m_Center: {x: 0, y: 0.78, z: 0}
 --- !u!1 &7212791195314867288
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,8 +108,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7212791195314867289}
+  - component: {fileID: 479022367558318702}
+  - component: {fileID: 3208371974342870130}
+  - component: {fileID: 9221816489139832019}
+  - component: {fileID: 8295191806187998105}
   m_Layer: 0
-  m_Name: lockPosition
+  m_Name: left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23,13 +126,78 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7212791195314867288}
-  m_LocalRotation: {x: -0, y: 0.7416365, z: 0.670802, w: 0}
-  m_LocalPosition: {x: -1.22, y: 1.797, z: -0.251}
+  m_LocalRotation: {x: -0.000000029802315, y: 0.71604216, z: 0.698057, w: 0}
+  m_LocalPosition: {x: -1.2199999, y: 1.8180007, z: -0.9440007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7016761005775681653}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -84.258, y: 180.00002, z: 0}
+  m_LocalEulerAnglesHint: {x: -88.54301, y: 179.99998, z: 0}
+--- !u!114 &479022367558318702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7212791195314867288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba7025970585c7c4e918c2cecd6d02c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barPrefab: {fileID: 3211470220267178308, guid: 639241a6c7b002b4d9c51101833a2d47,
+    type: 3}
+  FillAmount: 1
+--- !u!114 &3208371974342870130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7212791195314867288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 828cf6814930445dfa307b1fe2e6e858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectName: Bed
+  Breakable: 0
+  CurrentInteraction: {fileID: 0}
+  State:
+    Name: Good
+  lockPosition: {fileID: 7212791195314867289}
+--- !u!114 &9221816489139832019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7212791195314867288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af22082cde1544841b92182072a47e47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Sleep
+  Cost: 0
+  WorkRequired: 0
+  WorkDone: 0
+  Continuous: 1
+  MaxStress: 100
+  Type: 4
+--- !u!65 &8295191806187998105
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7212791195314867288}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 4, z: 1}
+  m_Center: {x: 0, y: 0.78, z: 0}
 --- !u!1 &7884230293755119851
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,9 +208,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7016761005775681653}
   - component: {fileID: 7884230293755119844}
-  - component: {fileID: 1557222263370165154}
-  - component: {fileID: 862313175784978913}
-  - component: {fileID: 1690813561579203167}
   m_Layer: 0
   m_Name: bed
   m_TagString: Untagged
@@ -63,6 +228,7 @@ Transform:
   m_Children:
   - {fileID: 608633623338833740}
   - {fileID: 7212791195314867289}
+  - {fileID: 1018656683858508249}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -92.857, z: 0}
@@ -77,60 +243,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 1, z: 6.5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1557222263370165154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7884230293755119851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba7025970585c7c4e918c2cecd6d02c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  barPrefab: {fileID: 3211470220267178308, guid: 639241a6c7b002b4d9c51101833a2d47,
-    type: 3}
-  FillAmount: 1
---- !u!114 &862313175784978913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7884230293755119851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 828cf6814930445dfa307b1fe2e6e858, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObjectName: Bed
-  Breakable: 0
-  CurrentInteraction: {fileID: 0}
-  State:
-    Name: Good
-  lockPosition: {fileID: 7212791195314867289}
---- !u!114 &1690813561579203167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7884230293755119851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af22082cde1544841b92182072a47e47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Sleep
-  Cost: 0
-  WorkRequired: 0
-  WorkDone: 0
-  Continuous: 1
-  MaxStress: 100
-  Type: 4
+  m_Size: {x: 3.5, y: 1, z: 4}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &608633623339224524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -188,25 +302,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4478f1e06e49a214ab4f05f8c038ac2b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4478f1e06e49a214ab4f05f8c038ac2b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4478f1e06e49a214ab4f05f8c038ac2b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2300012, guid: 4478f1e06e49a214ab4f05f8c038ac2b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 835a16466cb33fc4eba026ffc1cd39ab, type: 2}
+    - target: {fileID: 2300014, guid: 4478f1e06e49a214ab4f05f8c038ac2b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 835a16466cb33fc4eba026ffc1cd39ab, type: 2}
+    - target: {fileID: 2300004, guid: 4478f1e06e49a214ab4f05f8c038ac2b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a97630fb8cd3104b8072ce5525b2841, type: 2}
     - target: {fileID: 2300000, guid: 4478f1e06e49a214ab4f05f8c038ac2b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0a97630fb8cd3104b8072ce5525b2841, type: 2}
     - target: {fileID: 2300002, guid: 4478f1e06e49a214ab4f05f8c038ac2b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 0a97630fb8cd3104b8072ce5525b2841, type: 2}
-    - target: {fileID: 2300004, guid: 4478f1e06e49a214ab4f05f8c038ac2b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0a97630fb8cd3104b8072ce5525b2841, type: 2}
@@ -226,14 +348,6 @@ PrefabInstance:
       propertyPath: m_DirtyAABB
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2300012, guid: 4478f1e06e49a214ab4f05f8c038ac2b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 835a16466cb33fc4eba026ffc1cd39ab, type: 2}
-    - target: {fileID: 2300014, guid: 4478f1e06e49a214ab4f05f8c038ac2b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 835a16466cb33fc4eba026ffc1cd39ab, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4478f1e06e49a214ab4f05f8c038ac2b, type: 3}
 --- !u!4 &608633623338833740 stripped
