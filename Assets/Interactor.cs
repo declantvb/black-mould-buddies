@@ -32,43 +32,28 @@ public class Interactor : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		if (!menuOpen && selectedItem >= 0)
+		{
+			var complete = interactible.Interact(mystatus, currentList[selectedItem], Time.deltaTime);
+			if (complete)
+			{
+				StopInteracting();
+			}
+
+			var inputX = Input.GetAxis("Horizontal" + myplayer.Player);
+			var inputY = Input.GetAxis("Vertical" + myplayer.Player);
+
+			if (inputX != 0 || inputY != 0)
+			{
+				StopInteracting();
+			}
+		}
+
 		if (Input.GetAxis("Fire1" + myplayer.Player) > 0)
 		{
 			if (!clicked)
 			{
-				if (!menuOpen)
-				{
-					if (selectedItem >= 0)
-					{
-						var complete = interactible.Interact(mystatus, currentList[selectedItem], Time.deltaTime);
-						if (complete)
-						{
-							clicked = true;
-							selectedItem = -1;
-						}
-					}
-					else
-					{
-						var colliders = Physics.OverlapSphere(myTransform.position + myTransform.forward, 2);
-
-						foreach (var collider in colliders.OrderBy(c => (myTransform.position + myTransform.forward - c.transform.position).sqrMagnitude))
-						{
-							interactible = collider.GetComponentInParent<IInteractible>();
-							if (interactible != null)
-							{
-								currentList = interactible.GetInteractions();
-
-								buildmenu();
-								clicked = true;
-								break;
-							}
-						}
-					}
-				}
-				else 
-				{
-					destroymenu();
-				}
+				clicked = handleclick();
 			}
 		}
 		else
@@ -100,6 +85,38 @@ public class Interactor : MonoBehaviour
 				selectChanged = false;
 			}
 		}
+	}
+
+	private void StopInteracting()
+	{
+		selectedItem = -1;
+		interactible.StopInteracting(mystatus);
+	}
+
+	private bool handleclick()
+	{
+		if (!menuOpen)
+		{
+			var colliders = Physics.OverlapSphere(myTransform.position + myTransform.forward, 2);
+
+			foreach (var collider in colliders.OrderBy(c => (myTransform.position + myTransform.forward - c.transform.position).sqrMagnitude))
+			{
+				interactible = collider.GetComponentInParent<IInteractible>();
+				if (interactible != null)
+				{
+					currentList = interactible.GetInteractions();
+
+					buildmenu();
+					return true;
+				}
+			}
+		}
+		else
+		{
+			destroymenu();
+			return true;
+		}
+		return false;
 	}
 
 	private void buildmenu()

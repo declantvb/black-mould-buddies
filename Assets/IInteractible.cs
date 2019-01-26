@@ -8,6 +8,7 @@ public interface IInteractible
 
 	bool Interact(PlayerStatus status, Interaction type, float workAmount);
 	void Break();
+	void StopInteracting(PlayerStatus status);
 }
 
 [Serializable]

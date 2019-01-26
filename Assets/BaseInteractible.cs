@@ -30,7 +30,7 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 		interactions = GetComponents<Interaction>();
 		household = FindObjectOfType<Household>();
 		ps = GetComponentInChildren<ParticleSystem>();
-		ps.gameObject.SetActive(false);
+		ps?.gameObject.SetActive(false);
 	}
 
 	void Update()
@@ -56,30 +56,44 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 			if (household.Money >= type.Cost)
 			{
 				household.Money -= type.Cost;
-				CurrentInteraction = type; 
+				CurrentInteraction = type;
 			}
 		}
-		CurrentInteraction.DoWork(workAmount);
+		CurrentInteraction.DoWork(status, workAmount);
 
 		if (CurrentInteraction.Done)
 		{
-			if (CurrentInteraction.Name == "Fix")
-			{
-				State = States.Good;
-				ps.gameObject.SetActive(false);
-			}
-			CurrentInteraction.ApplyResult(status);
-			CurrentInteraction?.ResetToDefaults();
-			CurrentInteraction = null;
-			return true; 
+			EndCleanupInteraction(status);
+			return true;
 		}
 
 		return false;
 	}
 
+	private void EndCleanupInteraction(PlayerStatus status)
+	{
+		CurrentInteraction.FinishWork(status);
+		if (CurrentInteraction.Name == "Fix")
+		{
+			State = States.Good;
+			ps?.gameObject.SetActive(false);
+		}
+		CurrentInteraction.ResetToDefaults();
+		CurrentInteraction = null;
+	}
+
 	public virtual void Break()
 	{
 		State = States.Broken;
-		ps.gameObject.SetActive(true);
+		ps?.gameObject.SetActive(true);
+	}
+
+	public void StopInteracting(PlayerStatus status)
+	{
+		if (CurrentInteraction.Continuous)
+		{
+			EndCleanupInteraction(status);
+		}
+		CurrentInteraction = null;
 	}
 }

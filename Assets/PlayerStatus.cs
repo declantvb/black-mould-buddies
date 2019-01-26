@@ -15,9 +15,11 @@ public class PlayerStatus : MonoBehaviour
     public int needFood;
     public bool needSleep;
     float lifeStressTimer = LIFE_STRESS_TIME;
+	public bool chilling;
+	public bool sleeping;
 
-    // Start is called before the first frame update
-    void Start()
+	// Start is called before the first frame update
+	void Start()
     {
     }
 

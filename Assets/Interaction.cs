@@ -9,14 +9,38 @@ public class Interaction : MonoBehaviour
 	public int Cost = 1;
 	public float WorkRequired = 1;
 	public float WorkDone;
+	public bool Continuous;
 
-	public ResultType Type;
+	public InteractionType Type;
 	
-	public bool Done => WorkDone >= WorkRequired;
+	public bool Done => !Continuous && WorkDone >= WorkRequired;
 
-	public void DoWork(float amount)
+	public void DoWork(PlayerStatus status, float amount)
 	{
-		WorkDone += amount;
+		if (Continuous)
+		{
+			switch (Type)
+			{
+				case InteractionType.Chill:
+					status.chilling = true;
+					break;
+				case InteractionType.Sleep:
+					status.sleeping = true;
+					break;
+			}
+		}
+		else
+		{
+			WorkDone += amount; 
+		}
+	}
+
+	public void Cancel()
+	{
+		if (Continuous)
+		{
+
+		}
 	}
 
 	public void ResetToDefaults()
@@ -24,17 +48,23 @@ public class Interaction : MonoBehaviour
 		WorkDone = 0;
 	}
 
-	public void ApplyResult(PlayerStatus status)
+	public void FinishWork(PlayerStatus status)
 	{
 		switch (Type)
 		{
-			case ResultType.Bladder:
+			case InteractionType.Chill:
+				status.chilling = false;
+				break;
+			case InteractionType.Sleep:
+				status.sleeping = false;
+				break;
+			case InteractionType.Bladder:
 				status.needToilet = 0;
 				break;
-			case ResultType.Food:
+			case InteractionType.Food:
 				status.needFood = 0;
 				break;
-			case ResultType.None:
+			case InteractionType.None:
 				break;
 			default:
 				Debug.Log("unknoiwn");
@@ -42,10 +72,12 @@ public class Interaction : MonoBehaviour
 		}
 	}
 
-	public enum ResultType
+	public enum InteractionType
 	{
 		None,
 		Bladder,
-		Food
+		Food,
+		Chill,
+		Sleep
 	}
 }
