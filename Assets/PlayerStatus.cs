@@ -24,7 +24,7 @@ public class PlayerStatus : MonoBehaviour
     public Sprite[] stressLevelFaces;
 
     public Household household;
-    private SpriteRenderer face;
+    public SpriteRenderer face;
     private ParticleSystem particles;
 
     // Start is called before the first frame update

@@ -33,6 +33,11 @@ public class PlayerUIController : MonoBehaviour
 
             toiletNeedImage.color = playerStatus.needToilet >= PlayerStatus.NEED_TOILET_MAX ? highColor : lowColor;
             foodNeedImage.color = playerStatus.needFood >= PlayerStatus.NEED_FOOD_MAX ? highColor : lowColor;
+
+            if (null != playerStatus.face)
+            {
+                face.sprite = playerStatus.face.sprite;
+            }
         }
     }
 }
