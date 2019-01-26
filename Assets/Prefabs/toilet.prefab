@@ -48,7 +48,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.5, y: 0.5, z: 2.5}
-  m_Center: {x: 0.5, y: 1.5, z: -1}
+  m_Center: {x: 0.5, y: 0.5, z: -1}
 --- !u!114 &4836135567599329536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828cf6814930445dfa307b1fe2e6e858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ObjectName: Toilet
   CurrentInteraction: {fileID: 0}
 --- !u!114 &4836135567599329538
 MonoBehaviour:
@@ -119,7 +120,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4836135569164036977}
   m_LocalRotation: {x: -0, y: 0.8297073, z: 0.5581987, w: 0}
-  m_LocalPosition: {x: -8.939674, y: 0.937, z: 8.667}
+  m_LocalPosition: {x: 0.441, y: 1.151, z: -0.849}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4836135567599329550}
@@ -4804,15 +4805,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: e13266ac8005253408cee032f0ce1582, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.211675
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: e13266ac8005253408cee032f0ce1582, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.71
+      value: -0.673
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: e13266ac8005253408cee032f0ce1582, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.492007
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: e13266ac8005253408cee032f0ce1582, type: 3}
       propertyPath: m_LocalRotation.x

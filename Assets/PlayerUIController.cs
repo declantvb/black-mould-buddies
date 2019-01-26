@@ -24,6 +24,9 @@ public class PlayerUIController : MonoBehaviour
     {
         if (playerStatus != null)
         {
+            var amt = 0.8f + Mathf.Sin(Time.timeSinceLevelLoad * 10) * 0.2f;
+            var highColor = new Color(1, amt, amt);
+
             var stressProportion = playerStatus.stress / (float)PlayerStatus.MAX_STRESS;
             stressBar.fillAmount = stressProportion;
             stressBar.color = new Color(stressProportion * 0.8f + 0.2f, (1 - stressProportion) * 0.8f + 0.2f, 0.2f);
