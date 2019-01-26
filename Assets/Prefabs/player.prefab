@@ -222,7 +222,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4466338209456255623}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 81c4cccc8ca9747b79bdb9dd773ee336, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 1
@@ -240,10 +240,10 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 1
   m_AngularDrag: 0.5
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &4466338209456255624
 MonoBehaviour:
@@ -289,9 +289,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stress: 10
+  stressRate: 0
   needToilet: 0
   needFood: 0
   needSleep: 0
+  sleepyTime: 0
   chilling: 0
   sleeping: 0
 --- !u!1 &5302652507237534984

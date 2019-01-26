@@ -46,12 +46,15 @@ public class CharacterController : MonoBehaviour
 
 		// rotation
 		//currentRotation = ClampAngle(currentRotation + (inputR * rotationSpeed));
-		if (targetVector.sqrMagnitude > 0)
+		if (moveVector.sqrMagnitude > 0)
 		{
 			var rotationAngle = Quaternion.LookRotation(moveVector, Vector3.up);
 			// update Character position and rotation
 			myRigidbody.MoveRotation(Quaternion.RotateTowards(myTransform.rotation, rotationAngle, RotationSpeed * Time.fixedDeltaTime));
-			myRigidbody.MovePosition(myTransform.position + myTransform.forward * MovementSpeed * Time.fixedDeltaTime);
+			//myRigidbody.MovePosition(myTransform.position + myTransform.forward * MovementSpeed * Time.fixedDeltaTime);
 		}
+
+		moveVector *= 7;
+		myRigidbody.velocity = (new Vector3(moveVector.x, myRigidbody.velocity.y, moveVector.z) + myRigidbody.velocity) / 2;
 	}
 }
