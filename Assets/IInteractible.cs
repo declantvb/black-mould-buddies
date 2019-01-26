@@ -6,7 +6,7 @@ public interface IInteractible
 
 	Interaction[] GetInteractions();
 
-	bool Interact(Interaction type, float workAmount);
+	bool Interact(PlayerStatus status, Interaction type, float workAmount);
 	void Break();
 }
 

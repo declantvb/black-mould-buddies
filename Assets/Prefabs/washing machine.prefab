@@ -4777,6 +4777,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectName: Washing Machine
   CurrentInteraction: {fileID: 0}
+  State:
+    Name: Good
 --- !u!114 &8022539682291012819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4805,8 +4807,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af22082cde1544841b92182072a47e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: asdas
-  Cost: 1
+  Name: Wash
+  Cost: 2
   WorkRequired: 1
   WorkDone: 0
 --- !u!1001 &8022539680876472810

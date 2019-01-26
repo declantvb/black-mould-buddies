@@ -12,6 +12,7 @@ public class Interactor : MonoBehaviour
 
 	private Transform myTransform;
 	private CharacterController myplayer;
+	private PlayerStatus mystatus;
 	private Interaction[] currentList;
 	private bool clicked;
 	private bool menuOpen;
@@ -25,6 +26,7 @@ public class Interactor : MonoBehaviour
 	{
 		myTransform = this.transform;
 		myplayer = GetComponent<CharacterController>();
+		mystatus = GetComponent<PlayerStatus>();
 	}
 
 	// Update is called once per frame
@@ -38,7 +40,7 @@ public class Interactor : MonoBehaviour
 				{
 					if (selectedItem >= 0)
 					{
-						var complete = interactible.Interact(currentList[selectedItem], Time.deltaTime);
+						var complete = interactible.Interact(mystatus, currentList[selectedItem], Time.deltaTime);
 						if (complete)
 						{
 							clicked = true;

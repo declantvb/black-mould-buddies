@@ -4711,6 +4711,7 @@ GameObject:
   - component: {fileID: 1933787498254001487}
   - component: {fileID: 341676939314607884}
   - component: {fileID: 1746435578562356402}
+  - component: {fileID: 472039186}
   m_Layer: 0
   m_Name: oven
   m_TagString: Untagged
@@ -4776,6 +4777,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectName: Oven
   CurrentInteraction: {fileID: 0}
+  State:
+    Name: Good
 --- !u!114 &1746435578562356402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4792,6 +4795,24 @@ MonoBehaviour:
   Cost: 1
   WorkRequired: 3
   WorkDone: 0
+  Type: 0
+--- !u!114 &472039186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7070657668689593862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af22082cde1544841b92182072a47e47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Cook
+  Cost: 5
+  WorkRequired: 1
+  WorkDone: 0
+  Type: 2
 --- !u!1001 &6182033334528895887
 PrefabInstance:
   m_ObjectHideFlags: 0
