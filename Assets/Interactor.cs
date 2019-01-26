@@ -104,7 +104,7 @@ public class Interactor : MonoBehaviour
 		interactible.StopInteracting(mystatus);
 		if (interactible.lockPosition != null)
 		{
-			unlockplayer(); 
+			unlockplayer();
 		}
 	}
 
@@ -121,7 +121,8 @@ public class Interactor : MonoBehaviour
 				{
 					currentList = tempInteractible.GetInteractions();
 
-					if (currentList.Length == 0) {
+					if (currentList.Length == 0)
+					{
 						currentList = null;
 						return true;
 					}
@@ -135,9 +136,13 @@ public class Interactor : MonoBehaviour
 		else
 		{
 			destroymenu();
-			if (interactible.lockPosition != null)
+			if (interactible.alreadyBeingUsed(mystatus))
 			{
-				lockplayer(interactible.lockPosition); 
+				selectedItem = -1;
+			}
+			else if (interactible.lockPosition != null)
+			{
+				lockplayer(interactible.lockPosition);
 			}
 			return true;
 		}
@@ -171,7 +176,7 @@ public class Interactor : MonoBehaviour
 		myplayer.Locked = true;
 		menuOpen = true;
 		menuPanel.gameObject.SetActive(true);
-
+		menuPanel.transform.position = Camera.main.WorldToScreenPoint(transform.position) + Vector3.up * 25f;
 		menuPanel.GetComponentInChildren<Text>().text = interactible.Name;
 		var pos = 50;
 		List<GameObject> newMenuOptions = new List<GameObject>();
@@ -197,16 +202,13 @@ public class Interactor : MonoBehaviour
 			var interaction = currentList[i];
 			var selected = selectedItem == i;
 
-			if (interaction.CanWork(mystatus))
-			{
-				item.GetComponent<Image>().color = selected ? Color.cyan : Color.white;
-				item.GetComponentInChildren<Text>().text = $"{interaction.Name}";
-			}
-			else
-			{
-				item.GetComponent<Image>().color = Color.red;
-				item.GetComponentInChildren<Text>().text = $"{interaction.Name} (X)";
-			}
+			bool canwork = interaction.CanWork(mystatus);
+			bool havMoney = household.Money >= interaction.Cost;
+			item.GetComponent<Image>().color = !(canwork && havMoney) ? Color.red : selected ? Color.cyan : Color.white;
+
+			string stressText = canwork ? string.Empty : " (stress)";
+			string moneyText = havMoney ? string.Empty : " (cash)";
+			item.GetComponentInChildren<Text>().text = $"{interaction.Name}{stressText}{moneyText}";
 		}
 	}
 
@@ -220,7 +222,7 @@ public class Interactor : MonoBehaviour
 		{
 			newSelection += menuOptions.Length;
 		}
-		
+
 		selectedItem = newSelection;
 
 		updatemenu();
