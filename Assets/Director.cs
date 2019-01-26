@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class Director : MonoBehaviour
 {
-	public IInteractible[] Interactibles;
+	public BaseInteractible[] Interactibles;
 	public float TimeBetweenBreaks = 10;
 
 	public float TimeUntilNextBreak = 0;
 
 	void Start()
 	{
-		Interactibles = GameObject.FindObjectsOfType<MonoBehaviour>().OfType<IInteractible>().ToArray();
+		Interactibles = GameObject.FindObjectsOfType<MonoBehaviour>().OfType<BaseInteractible>().Where(x => x.Breakable).ToArray();
 		//Time.timeScale = 0;
 	}
 

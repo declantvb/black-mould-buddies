@@ -76,4 +76,13 @@ public class PlayerStatus : MonoBehaviour
         if (needToilet > NEED_TOILET_MAX) needToilet = NEED_TOILET_MAX;
         if (needFood > NEED_FOOD_MAX) needFood = NEED_FOOD_MAX;
     }
+
+	public void removeStress(int amount)
+	{
+		stress -= amount;
+		if (stress <= 0)
+		{
+			stress = 0;
+		}
+	}
 }
