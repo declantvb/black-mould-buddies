@@ -48,7 +48,8 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 
 	void Update()
 	{
-		interactionTimeout -= Time.deltaTime;
+		if(!CurrentInteraction?.Continuous ?? true)
+			interactionTimeout -= Time.deltaTime;
 
 		if (interactionTimeout < 0)
 		{
