@@ -21,6 +21,7 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	public ObjectState State = States.Good;
 	public Transform lockPosition;
 	public AudioSource AudioBreak;
+	public AudioSource AudioFixing;
 
 	//private MeshRenderer[] myRenderers;
 	private Interaction[] interactions;
@@ -85,6 +86,9 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 				household.Money -= type.Cost;
 				CurrentInteraction = type;
 				CurrentPlayer = status;
+				
+				if (AudioFixing != null)
+					AudioFixing.Play();
 			}
 			else
 			{
@@ -113,9 +117,10 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 			ps?.gameObject.SetActive(false);
 
 			if (AudioBreak != null)
-			{
 				StartCoroutine(FadeOut(AudioBreak, 1f));
-			}
+			
+			if (AudioFixing != null)
+				StartCoroutine(FadeOut(AudioFixing, 0.5f));
 		}
 		CurrentInteraction.ResetToDefaults();
 		CurrentInteraction = null;
