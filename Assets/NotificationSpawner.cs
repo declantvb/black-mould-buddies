@@ -23,18 +23,25 @@ public class NotificationSpawner : MonoBehaviour
 
     public void SpawnNotification(string text, Color color) 
     {
-        StartCoroutine(internalSpawn(text, color));
+        var notification = Instantiate(notificationPrefab, transform);
+        var textObj = notification.GetComponent<UnityEngine.UI.Text>();
+        textObj.text = text;
+        textObj.color = color;
+        StartCoroutine(internalSpawn(notification, textObj));
     }
 
-    IEnumerator internalSpawn(string text, Color color) 
+    IEnumerator internalSpawn(GameObject notification, UnityEngine.UI.Text textObj) 
     {
-        var notification = Instantiate(notificationPrefab);
         var timeLeft = 3f;
+
+        var color = textObj.color;
 
         while (timeLeft > 0) {
             yield return wait;
             timeLeft -= Time.deltaTime;
-            notification.transform.position = notification.transform.position + new Vector3(0, Time.deltaTime);
+            var alpha = Mathf.Clamp(timeLeft, 0, 1);
+            notification.transform.position = notification.transform.position + new Vector3(0, Time.deltaTime * 10);
+            textObj.color = new Color(color.r, color.g, color.b, alpha);
         }
 
         Destroy(notification);
