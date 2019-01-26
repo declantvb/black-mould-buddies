@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BaseInteractible : MonoBehaviour, IInteractible
@@ -35,17 +36,19 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	void Update()
 	{
 		//myRenderer.material.color = State == States.Broken ? Color.red : Color.blue;
-		ui.FillAmount = State != States.Good && CurrentInteraction != null
+		ui.FillAmount = CurrentInteraction != null
 			? Mathf.Clamp(CurrentInteraction.WorkDone / CurrentInteraction.WorkRequired, 0, 1)
 			: 0;
 	}
 
 	public Interaction[] GetInteractions()
 	{
-		return interactions;
+		return State == States.Broken
+			? interactions.Where(x => x.Name == "Fix").ToArray()
+			: interactions.Where(x => x.Name != "Fix").ToArray();
 	}
 
-	public bool Interact(Interaction type, float workAmount)
+	public bool Interact(PlayerStatus status, Interaction type, float workAmount)
 	{
 		if (type != CurrentInteraction)
 		{
@@ -64,8 +67,8 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 			{
 				State = States.Good;
 				ps.gameObject.SetActive(false);
-
 			}
+			CurrentInteraction.ApplyResult(status);
 			CurrentInteraction?.ResetToDefaults();
 			CurrentInteraction = null;
 			return true; 
@@ -78,7 +81,5 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	{
 		State = States.Broken;
 		ps.gameObject.SetActive(true);
-
-		Debug.Log("playing");
 	}
 }
