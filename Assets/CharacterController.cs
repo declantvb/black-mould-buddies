@@ -7,10 +7,12 @@ public class CharacterController : MonoBehaviour
 	public string Player = "";
 	public float MovementSpeed = 5f;
 	public float RotationSpeed = 800f;
+	public bool Locked;
 
 	Transform myTransform;
 	Rigidbody myRigidbody;
 	Transform cameraHolder;
+
 
 	// Start is called before the first frame update
 	void Start()
@@ -28,6 +30,8 @@ public class CharacterController : MonoBehaviour
 
 	void FixedUpdate()
 	{
+		if (Locked) return;
+
 		// get inputs
 		var inputX = Input.GetAxis("Horizontal" + Player);
 		var inputY = Input.GetAxis("Vertical" + Player);
