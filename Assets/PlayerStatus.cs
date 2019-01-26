@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerStatus : MonoBehaviour
 {
     public const int MAX_STRESS = 100;
-    public const float LIFE_STRESS_TIME = 2f;
+    public const float LIFE_STRESS_TIME = 0.2f;
 
     public const int NEED_TOILET_MAX = 13;
     public const int NEED_FOOD_MAX = 17;
@@ -20,6 +20,8 @@ public class PlayerStatus : MonoBehaviour
     float lifeStressTimer = LIFE_STRESS_TIME;
 	public bool chilling;
 	public bool sleeping;
+
+    public Sprite[] stressLevelFaces;
 
     public Household household;
     private SpriteRenderer face;
@@ -64,6 +66,8 @@ public class PlayerStatus : MonoBehaviour
             m.startColor = stressRate > 0 ? Color.red : Color.green;
             particles.Emit(Mathf.Abs(stressRate));
 
+            var stressLevel = Mathf.Clamp(Mathf.FloorToInt(stress / (float)(MAX_STRESS+1) * stressLevelFaces.Length), 0, stressLevelFaces.Length);
+            face.sprite = stressLevelFaces[stressLevel];
         }
 
 

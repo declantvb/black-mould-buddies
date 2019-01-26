@@ -378,6 +378,11 @@ MonoBehaviour:
   sleepyTime: 0
   chilling: 0
   sleeping: 0
+  stressLevelFaces:
+  - {fileID: 21300000, guid: 6633ec9685813412e94d9c721a60333e, type: 3}
+  - {fileID: 21300000, guid: 67e4d5a016c88427cb038513098514e3, type: 3}
+  - {fileID: 21300000, guid: 01ed86b0436f14f7781f714edf8af14d, type: 3}
+  - {fileID: 21300000, guid: a38bb1f4d4fba40ecab4f0040dc0c91e, type: 3}
   household: {fileID: 0}
 --- !u!198 &3873512639094769553
 ParticleSystem:
