@@ -27,6 +27,7 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	private Household household;
 	private ParticleSystem ps;
 	private WorkProgress ui;
+	public bool alreadyBeingUsed(PlayerStatus status) => CurrentPlayer != status && interactionTimeout > 0;
 
 	public string Name => ObjectName;
 
@@ -73,7 +74,7 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 
 	public bool Interact(PlayerStatus status, Interaction type, float workAmount)
 	{
-		if (CurrentPlayer != status && interactionTimeout > 0)
+		if (alreadyBeingUsed(status))
 		{
 			return false;
 		}
@@ -136,6 +137,8 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 
 	public void StopInteracting(PlayerStatus status)
 	{
+		if (status != CurrentPlayer) return;
+
 		if (CurrentInteraction?.Continuous ?? false)
 		{
 			EndCleanupInteraction(status);
