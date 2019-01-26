@@ -31,7 +31,7 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	public bool alreadyBeingUsed(PlayerStatus status) => CurrentPlayer != status && interactionTimeout > 0;
 
 	public string Name => ObjectName;
-	
+
 	void Start()
 	{
 		//myRenderers = GetComponentsInChildren<MeshRenderer>();
@@ -40,14 +40,14 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 		household = FindObjectOfType<Household>();
 		ps = GetComponentInChildren<ParticleSystem>();
 		ps?.gameObject.SetActive(false);
-		
+
 		// Break everything for testing
-//		Break();
+		//		Break();
 	}
 
 	void Update()
 	{
-		if(!CurrentInteraction?.Continuous ?? true)
+		if (!CurrentInteraction?.Continuous ?? true)
 			interactionTimeout -= Time.deltaTime;
 
 		if (interactionTimeout < 0)
@@ -56,7 +56,8 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 		}
 
 		//myRenderer.material.color = State == States.Broken ? Color.red : Color.blue;
-		if (null != ui) {
+		if (null != ui)
+		{
 			ui.FillAmount = (CurrentInteraction != null && !CurrentInteraction.Continuous)
 				? Mathf.Clamp(CurrentInteraction.WorkDone / CurrentInteraction.WorkRequired, 0, 1)
 				: 0;
@@ -80,14 +81,18 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 		if (type != CurrentInteraction)
 		{
 			CurrentInteraction?.ResetToDefaults();
-			if (household.Money >= type.Cost)
+			if (household.Money >= type.Cost && status.stressBalance > type.StressCost)
 			{
 				household.Money -= type.Cost;
+				status.stress += type.StressCost;
 				CurrentInteraction = type;
 				CurrentPlayer = status;
-				
-				if (AudioFixing != null)
-					AudioFixing.Play();
+
+				if (CurrentInteraction.Name == "Fix")
+				{
+					if (AudioFixing != null)
+						AudioFixing.Play();
+				}
 			}
 			else
 			{
@@ -109,6 +114,8 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 
 	private void EndCleanupInteraction(PlayerStatus status)
 	{
+		if (Random.value < 0.2f) Break();
+
 		CurrentInteraction.FinishWork(status);
 		if (CurrentInteraction.Name == "Fix")
 		{
@@ -117,7 +124,7 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 
 			if (AudioBreak != null)
 				StartCoroutine(FadeOut(AudioBreak, 1f));
-			
+
 			if (AudioFixing != null)
 				StartCoroutine(FadeOut(AudioFixing, 0.5f));
 		}
@@ -145,7 +152,7 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 		{
 			EndCleanupInteraction(status);
 		}
-		else if(CurrentInteraction.Name == "Fix")
+		else if (CurrentInteraction.Name == "Fix")
 		{
 			if (AudioBreak != null)
 				StartCoroutine(FadeOut(AudioBreak, 1f));
@@ -158,15 +165,15 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	}
 
 	private IEnumerator FadeOut(AudioSource audioSource, float FadeTime)
-     	{
-     		float startVolume = audioSource.volume;
-     		while (audioSource.volume > 0)
-     		{
-     			audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
-     			Debug.Log(audioSource.volume);
-     			yield return null;
-     		}
-     		audioSource.Stop();
-     		audioSource.volume = startVolume;
-     	}
+	{
+		float startVolume = audioSource.volume;
+		while (audioSource.volume > 0)
+		{
+			audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
+			Debug.Log(audioSource.volume);
+			yield return null;
+		}
+		audioSource.Stop();
+		audioSource.volume = startVolume;
+	}
 }

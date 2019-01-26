@@ -26,9 +26,10 @@ public class PlayerStatus : MonoBehaviour
     public Household household;
     public SpriteRenderer face;
     private ParticleSystem particles;
+	public int stressBalance => MAX_STRESS - stress;
 
-    // Start is called before the first frame update
-    void Start()
+	// Start is called before the first frame update
+	void Start()
     {
         household = FindObjectsOfType<MonoBehaviour>().OfType<Household>().First();
         face = transform.Find("FacialExpression").GetComponent<SpriteRenderer>();

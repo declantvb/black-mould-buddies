@@ -64,9 +64,13 @@ MonoBehaviour:
   ObjectName: Bed
   Breakable: 0
   CurrentInteraction: {fileID: 0}
+  CurrentPlayer: {fileID: 0}
+  interactionTimeout: 0
   State:
     Name: Good
   lockPosition: {fileID: 1018656683858508249}
+  AudioBreak: {fileID: 0}
+  AudioFixing: {fileID: 0}
 --- !u!114 &4801136785898622931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,10 +85,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Sleep
   Cost: 0
+  StressCost: 0
   WorkRequired: 0
   WorkDone: 0
   Continuous: 1
-  MaxStress: 100
+  Cancelable: 1
+  MaxStress: 200
   Type: 4
 --- !u!65 &6641034468274034261
 BoxCollider:
@@ -163,9 +169,13 @@ MonoBehaviour:
   ObjectName: Bed
   Breakable: 0
   CurrentInteraction: {fileID: 0}
+  CurrentPlayer: {fileID: 0}
+  interactionTimeout: 0
   State:
     Name: Good
   lockPosition: {fileID: 7212791195314867289}
+  AudioBreak: {fileID: 0}
+  AudioFixing: {fileID: 0}
 --- !u!114 &9221816489139832019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,10 +190,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Sleep
   Cost: 0
+  StressCost: 0
   WorkRequired: 0
   WorkDone: 0
   Continuous: 1
-  MaxStress: 100
+  Cancelable: 1
+  MaxStress: 200
   Type: 4
 --- !u!65 &8295191806187998105
 BoxCollider:

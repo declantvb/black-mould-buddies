@@ -6,7 +6,6 @@ using UnityEngine;
 public class Director : MonoBehaviour
 {
 	public BaseInteractible[] Interactibles;
-	public float TimeBetweenBreaks = 10;
 
 	public float TimeUntilNextBreak = 0;
 
@@ -47,7 +46,7 @@ public class Director : MonoBehaviour
 		TimeUntilNextBreak -= Time.fixedDeltaTime;
 		if (TimeUntilNextBreak <= 0)
 		{
-			TimeUntilNextBreak = TimeBetweenBreaks;
+			TimeUntilNextBreak = Random.Range(30,60);
 
 			var inter = Interactibles[Random.Range(0, Interactibles.Length - 1)];
 			inter.Break();

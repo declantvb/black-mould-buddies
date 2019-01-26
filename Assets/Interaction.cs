@@ -7,6 +7,7 @@ public class Interaction : MonoBehaviour
 {
 	public string Name;
 	public int Cost = 1;
+	public int StressCost = 1;
 	public float WorkRequired = 1;
 	public float WorkDone;
 	public bool Continuous;

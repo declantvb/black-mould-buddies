@@ -4800,10 +4800,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Fix
-  Cost: 1
+  Cost: 0
+  StressCost: 20
   WorkRequired: 3
   WorkDone: 0
   Continuous: 0
+  Cancelable: 1
   MaxStress: 75
   Type: 0
 --- !u!114 &1184997272
@@ -4819,10 +4821,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Wash
-  Cost: 2
+  Cost: 0
+  StressCost: 5
   WorkRequired: 1
   WorkDone: 0
   Continuous: 0
+  Cancelable: 1
   MaxStress: 25
   Type: 0
 --- !u!82 &8858516925388716512
@@ -5026,6 +5030,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8022539682291012823}
     m_Modifications:
+    - target: {fileID: 100004, guid: e08965e2eeeecbe4eb6e53b5f24201a1, type: 3}
+      propertyPath: m_Name
+      value: washingmachine
+      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: e08965e2eeeecbe4eb6e53b5f24201a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5069,10 +5077,6 @@ PrefabInstance:
     - target: {fileID: 400004, guid: e08965e2eeeecbe4eb6e53b5f24201a1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: e08965e2eeeecbe4eb6e53b5f24201a1, type: 3}
-      propertyPath: m_Name
-      value: washingmachine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e08965e2eeeecbe4eb6e53b5f24201a1, type: 3}
