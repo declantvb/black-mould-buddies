@@ -68,7 +68,7 @@ public class PlayerStatus : MonoBehaviour
 
             var stressLevel = Mathf.Clamp(Mathf.FloorToInt(stress / (float)(MAX_STRESS+1) * stressLevelFaces.Length), 0, stressLevelFaces.Length);
             face.sprite = stressLevelFaces[stressLevel];
-        }
+		}
 
 
         // Clamp to maximum stress
@@ -76,4 +76,13 @@ public class PlayerStatus : MonoBehaviour
         if (needToilet > NEED_TOILET_MAX) needToilet = NEED_TOILET_MAX;
         if (needFood > NEED_FOOD_MAX) needFood = NEED_FOOD_MAX;
     }
+
+	public void removeStress(int v)
+	{
+		stress -= 20;
+		if (stress < 0)
+		{
+			stress = 0;
+		}
+	}
 }

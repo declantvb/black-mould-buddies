@@ -13,6 +13,7 @@ public class Interactor : MonoBehaviour
 	private Transform myTransform;
 	private CharacterController myplayer;
 	private PlayerStatus mystatus;
+	private Household household;
 	private Interaction[] currentList;
 	private bool clicked;
 	private bool menuOpen;
@@ -29,6 +30,7 @@ public class Interactor : MonoBehaviour
 		myTransform = this.transform;
 		myplayer = GetComponent<CharacterController>();
 		mystatus = GetComponent<PlayerStatus>();
+		household = FindObjectOfType<Household>();
 	}
 
 	// Update is called once per frame
