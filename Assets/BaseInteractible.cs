@@ -16,6 +16,7 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	public Interaction CurrentInteraction;
 	public ObjectState State = States.Good;
 	public Transform lockPosition;
+	public AudioSource AudioBreak;
 
 	//private MeshRenderer[] myRenderers;
 	private Interaction[] interactions;
@@ -24,6 +25,8 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	private WorkProgress ui;
 
 	public string Name => ObjectName;
+
+	
 
 
 	void Start()
@@ -34,6 +37,9 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 		household = FindObjectOfType<Household>();
 		ps = GetComponentInChildren<ParticleSystem>();
 		ps?.gameObject.SetActive(false);
+		
+		// Break everything for testing
+//		Break();
 	}
 
 	void Update()
@@ -87,6 +93,11 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 		{
 			State = States.Good;
 			ps?.gameObject.SetActive(false);
+
+			if (AudioBreak != null)
+			{
+				StartCoroutine(FadeOut(AudioBreak, 1f));
+			}
 		}
 		CurrentInteraction.ResetToDefaults();
 		CurrentInteraction = null;
@@ -97,7 +108,9 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 		if (Breakable)
 		{
 			State = States.Broken;
-			ps?.gameObject.SetActive(true); 
+			ps?.gameObject.SetActive(true);
+			if (AudioBreak != null)
+				AudioBreak.Play();
 		}
 	}
 
@@ -109,4 +122,17 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 		}
 		CurrentInteraction = null;
 	}
+
+	private IEnumerator FadeOut(AudioSource audioSource, float FadeTime)
+     	{
+     		float startVolume = audioSource.volume;
+     		while (audioSource.volume > 0)
+     		{
+     			audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
+     			Debug.Log(audioSource.volume);
+     			yield return null;
+     		}
+     		audioSource.Stop();
+     		audioSource.volume = startVolume;
+     	}
 }
