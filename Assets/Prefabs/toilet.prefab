@@ -121,7 +121,7 @@ MonoBehaviour:
   WorkRequired: 0.5
   WorkDone: 0
   Continuous: 0
-  MaxStress: 90
+  MaxStress: 200
   Type: 1
 --- !u!1 &4836135569164036977
 GameObject:
