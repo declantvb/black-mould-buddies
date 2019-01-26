@@ -16,6 +16,11 @@ public class Interaction : MonoBehaviour
 	
 	public bool Done => !Continuous && WorkDone >= WorkRequired;
 
+	public bool CanWork(PlayerStatus status)
+	{
+		return status.stress <= MaxStress;
+	}
+
 	public void DoWork(PlayerStatus status, float amount)
 	{
 		if (Continuous)
