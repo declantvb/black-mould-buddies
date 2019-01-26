@@ -1508,6 +1508,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: player
       objectReference: {fileID: 0}
+    - target: {fileID: 4308379326887780677, guid: 98a649f23cd63e242bae35c8381aa04b,
+        type: 3}
+      propertyPath: needToilet
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4466338209456255627, guid: 98a649f23cd63e242bae35c8381aa04b,
         type: 3}
       propertyPath: m_LocalPosition.x

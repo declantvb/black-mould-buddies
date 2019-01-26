@@ -34,6 +34,8 @@ public class Interaction : MonoBehaviour
 			case ResultType.Food:
 				status.needFood = 0;
 				break;
+			case ResultType.None:
+				break;
 			default:
 				Debug.Log("unknoiwn");
 				break;

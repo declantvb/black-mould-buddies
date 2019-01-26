@@ -81,7 +81,5 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	{
 		State = States.Broken;
 		ps.gameObject.SetActive(true);
-
-		Debug.Log("playing");
 	}
 }
