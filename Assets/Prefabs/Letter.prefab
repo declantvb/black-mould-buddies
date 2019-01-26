@@ -83,8 +83,7 @@ MonoBehaviour:
   Continuous: 0
   MaxStress: 0
   Type: 0
-  dollars: 0
-  name: 
+  letterName: 
   type: 0
 --- !u!114 &3319393275946831463
 MonoBehaviour:
@@ -99,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectName: 
-  Breakable: 1
+  Breakable: 0
   CurrentInteraction: {fileID: 0}
   State:
     Name: Good

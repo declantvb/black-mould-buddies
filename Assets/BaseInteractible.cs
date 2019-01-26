@@ -12,7 +12,7 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	}
 
 	public string ObjectName;
-	public bool Breakable = true;
+	public bool Breakable = false;
 	public Interaction CurrentInteraction;
 	public ObjectState State = States.Good;
 	public Transform lockPosition;
