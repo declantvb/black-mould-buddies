@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -118,7 +118,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-81506
+  m_Name: pb_Mesh-98852
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -272,6 +272,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!82 &28327912 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4824178168017286018, guid: 2ab2016ab05854e0196c0bad049e6490,
+    type: 3}
+  m_PrefabInstance: {fileID: 1088772593}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &146721288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -924,6 +930,10 @@ PrefabInstance:
       propertyPath: timeLabel
       value: 
       objectReference: {fileID: 528598842}
+    - target: {fileID: 886904209, guid: 2ab2016ab05854e0196c0bad049e6490, type: 3}
+      propertyPath: AudioLight
+      value: 
+      objectReference: {fileID: 28327912}
     - target: {fileID: 469032463, guid: 2ab2016ab05854e0196c0bad049e6490, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1060,6 +1070,8 @@ MonoBehaviour:
   State:
     Name: Good
   lockPosition: {fileID: 0}
+  AudioBreak: {fileID: 0}
+  AudioFixing: {fileID: 0}
 --- !u!135 &1477700247
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1093,7 +1105,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-81516
+  m_Name: pb_Mesh-98862
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1265,7 +1277,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-81530
+  m_Name: pb_Mesh-98876
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1514,7 +1526,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-81482
+  m_Name: pb_Mesh-98828
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -2296,11 +2308,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5561653098762245895, guid: ccae4c864037b43438da79d8b5eb939c,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 598473657}
     - target: {fileID: 8149329431807626889, guid: ccae4c864037b43438da79d8b5eb939c,
         type: 3}
       propertyPath: MaxStress
@@ -2316,6 +2323,11 @@ PrefabInstance:
       propertyPath: Cost
       value: -300
       objectReference: {fileID: 0}
+    - target: {fileID: 5561653098762245895, guid: ccae4c864037b43438da79d8b5eb939c,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 598473657}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccae4c864037b43438da79d8b5eb939c, type: 3}
 --- !u!1001 &5820718984577378124

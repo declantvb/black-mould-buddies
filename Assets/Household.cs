@@ -14,6 +14,8 @@ public class Household : MonoBehaviour
     public Transform mailman;
     public GameObject letterPrefab;
     private Light[] lights;
+    private bool lightsOut;
+    public AudioSource AudioLight;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +36,18 @@ public class Household : MonoBehaviour
             DayPasses();
         }
 
-        var lightsOut = Hour > 35 && Hour < 45;
+        var old = lightsOut;
+        
+        lightsOut = Hour > 35 && Hour < 45;
+
+        if (old != lightsOut)
+        {
+            // do sound
+            if (AudioLight != null)
+            {
+                AudioLight.Play();
+            }
+        }
 
         foreach (var light in lights) {
             light.enabled = !lightsOut;
