@@ -31,7 +31,6 @@ public class Interactor : MonoBehaviour
 					if (interactible != null)
 					{
 						currentList = interactible.GetInteractions();
-						Debug.Log("current list : " + string.Join(",", currentList.Select(x => x.Name)));
 
 						var complete = interactible.Interact(currentList[0], Time.deltaTime);
 						clicked = complete;

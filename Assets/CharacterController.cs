@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-	string player = "";
-	float movementSpeed = 5.0f;
-	float rotationSpeed = 5.0f;
+	public string Player = "";
+	public float MovementSpeed = 5f;
+	public float RotationSpeed = 800f;
 
 	Transform myTransform;
-	private Rigidbody myRigidbody;
+	Rigidbody myRigidbody;
 	Transform cameraHolder;
 
 	// Start is called before the first frame update
@@ -29,8 +29,8 @@ public class CharacterController : MonoBehaviour
 	void FixedUpdate()
 	{
 		// get inputs
-		var inputX = Input.GetAxis("Horizontal" + player);
-		var inputY = Input.GetAxis("Vertical" + player);
+		var inputX = Input.GetAxis("Horizontal" + Player);
+		var inputY = Input.GetAxis("Vertical" + Player);
 		//var inputR = Mathf.Clamp(Input.GetAxis("Mouse X"), -1.0f, 1.0f);
 
 		// get current position and rotation, then do calculations
@@ -46,8 +46,8 @@ public class CharacterController : MonoBehaviour
 		{
 			var rotationAngle = Quaternion.LookRotation(moveVector, Vector3.up);
 			// update Character position and rotation
-			myRigidbody.MoveRotation(Quaternion.RotateTowards(myTransform.rotation, rotationAngle, 500f * Time.fixedDeltaTime));
-			myRigidbody.MovePosition(myTransform.position + myTransform.forward * movementSpeed * Time.fixedDeltaTime);
+			myRigidbody.MoveRotation(Quaternion.RotateTowards(myTransform.rotation, rotationAngle, RotationSpeed * Time.fixedDeltaTime));
+			myRigidbody.MovePosition(myTransform.position + myTransform.forward * MovementSpeed * Time.fixedDeltaTime);
 		}
 	}
 }

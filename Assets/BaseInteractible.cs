@@ -10,13 +10,13 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 		public static ObjectState Good = new ObjectState { Name = "Good" };
 	}
 
-	public float WorkDone;
 	public Interaction CurrentInteraction;
 
 	public ObjectState State = States.Good;
 
 	private MeshRenderer myRenderer;
 	private Interaction[] interactions;
+	private Household household;
 	private WorkProgress ui;
 
 	void Start()
@@ -24,13 +24,14 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 		myRenderer = GetComponent<MeshRenderer>();
 		ui = GetComponent<WorkProgress>();
 		interactions = GetComponents<Interaction>();
+		household = FindObjectOfType<Household>();
 	}
 
 	void Update()
 	{
 		myRenderer.material.color = State == States.Broken ? Color.red : Color.blue;
 		ui.FillAmount = State != States.Good && CurrentInteraction != null
-			? Mathf.Clamp(WorkDone / CurrentInteraction.Work, 0, 1)
+			? Mathf.Clamp(CurrentInteraction.WorkDone / CurrentInteraction.WorkRequired, 0, 1)
 			: 0;
 	}
 
@@ -43,29 +44,21 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	{
 		if (type != CurrentInteraction)
 		{
-			CurrentInteraction = type;
-			WorkDone = 0;
+			CurrentInteraction?.ResetToDefaults();
+			if (household.Money >= type.Cost)
+			{
+				household.Money -= type.Cost;
+				CurrentInteraction = type; 
+			}
 		}
+		CurrentInteraction.DoWork(workAmount);
 
-		switch (type.Name)
+		if (CurrentInteraction.Done)
 		{
-			case "Fix":
-				if (State == States.Broken)
-				{
-					WorkDone += workAmount;
-					if (WorkDone >= CurrentInteraction.Work)
-					{
-						WorkDone = 0;
-						State = States.Good;
-						CurrentInteraction = null;
-						Debug.Log("i got fixed :O");
-						return true;
-					}
-				}
-				break;
-			default:
-				Debug.Log($"unhandled: {type}");
-				break;
+			CurrentInteraction?.ResetToDefaults();
+			CurrentInteraction = null;
+			State = States.Good;
+			return true; 
 		}
 
 		return false;
@@ -74,6 +67,5 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	public virtual void Break()
 	{
 		State = States.Broken;
-		WorkDone = 0;
 	}
 }
