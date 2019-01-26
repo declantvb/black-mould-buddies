@@ -36,7 +36,7 @@ public class PlayerStatus : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        sleepyTime = household.Hour <= 7 && household.Hour >= 3;
+        sleepyTime = household.Hour > 35 && household.Hour < 45;
 
         stressRate = 1;
         
@@ -46,7 +46,7 @@ public class PlayerStatus : MonoBehaviour
 
         if (sleepyTime){
             if (sleeping) {
-                stressRate -= 1;
+                stressRate -= 3;
             } else {
                 stressRate += 1;
             }
@@ -73,6 +73,7 @@ public class PlayerStatus : MonoBehaviour
 
         // Clamp to maximum stress
         if (stress > MAX_STRESS) stress = MAX_STRESS;
+        if (stress < 0) stress = 0;
         if (needToilet > NEED_TOILET_MAX) needToilet = NEED_TOILET_MAX;
         if (needFood > NEED_FOOD_MAX) needFood = NEED_FOOD_MAX;
     }

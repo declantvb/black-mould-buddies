@@ -51,12 +51,15 @@ public class Interactor : MonoBehaviour
 				return;
 			}
 
-			var inputX = Input.GetAxis("Horizontal" + myplayer.Player);
-			var inputY = Input.GetAxis("Vertical" + myplayer.Player);
-
-			if (inputX != 0 || inputY != 0)
+			if (currentList[selectedItem].Cancelable)
 			{
-				StopInteracting();
+				var inputX = Input.GetAxis("Horizontal" + myplayer.Player);
+				var inputY = Input.GetAxis("Vertical" + myplayer.Player);
+
+				if (inputX != 0 || inputY != 0)
+				{
+					StopInteracting();
+				} 
 			}
 		}
 

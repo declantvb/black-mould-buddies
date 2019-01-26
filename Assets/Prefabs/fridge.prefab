@@ -4824,7 +4824,7 @@ MonoBehaviour:
   WorkDone: 0
   Continuous: 0
   MaxStress: 50
-  Type: 0
+  Type: 2
 --- !u!82 &8790841863772761790
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5026,6 +5026,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7392273095876685843}
     m_Modifications:
+    - target: {fileID: 100006, guid: 3e734e59f8d535748ad987a5b94a36d3, type: 3}
+      propertyPath: m_Name
+      value: fridge
+      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 3e734e59f8d535748ad987a5b94a36d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5070,10 +5074,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 100006, guid: 3e734e59f8d535748ad987a5b94a36d3, type: 3}
-      propertyPath: m_Name
-      value: fridge
-      objectReference: {fileID: 0}
+    - target: {fileID: 2300004, guid: 3e734e59f8d535748ad987a5b94a36d3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d13fd3a4ac20c945b9b7077a0d84a0f, type: 2}
+    - target: {fileID: 2300002, guid: 3e734e59f8d535748ad987a5b94a36d3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d13fd3a4ac20c945b9b7077a0d84a0f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e734e59f8d535748ad987a5b94a36d3, type: 3}
 --- !u!4 &1002744099625860001 stripped
