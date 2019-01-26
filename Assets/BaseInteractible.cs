@@ -31,10 +31,7 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	public bool alreadyBeingUsed(PlayerStatus status) => CurrentPlayer != status && interactionTimeout > 0;
 
 	public string Name => ObjectName;
-
 	
-
-
 	void Start()
 	{
 		//myRenderers = GetComponentsInChildren<MeshRenderer>();
@@ -147,6 +144,14 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 		if (CurrentInteraction?.Continuous ?? false)
 		{
 			EndCleanupInteraction(status);
+		}
+		else if(CurrentInteraction.Name == "Fix")
+		{
+			if (AudioBreak != null)
+				StartCoroutine(FadeOut(AudioBreak, 1f));
+
+			if (AudioFixing != null)
+				StartCoroutine(FadeOut(AudioFixing, 0.5f));
 		}
 		CurrentInteraction = null;
 		CurrentPlayer = null;
