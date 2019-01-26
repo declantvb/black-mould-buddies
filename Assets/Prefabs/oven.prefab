@@ -4776,9 +4776,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectName: Oven
+  Breakable: 1
   CurrentInteraction: {fileID: 0}
   State:
     Name: Good
+  lockPosition: {fileID: 0}
 --- !u!114 &1746435578562356402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4795,6 +4797,8 @@ MonoBehaviour:
   Cost: 1
   WorkRequired: 3
   WorkDone: 0
+  Continuous: 0
+  MaxStress: 75
   Type: 0
 --- !u!114 &472039186
 MonoBehaviour:
@@ -4812,6 +4816,8 @@ MonoBehaviour:
   Cost: 5
   WorkRequired: 1
   WorkDone: 0
+  Continuous: 0
+  MaxStress: 75
   Type: 2
 --- !u!1001 &6182033334528895887
 PrefabInstance:

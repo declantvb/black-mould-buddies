@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2814383134637996385}
   m_LocalRotation: {x: -0.22878389, y: -0.6690725, z: -0.22878392, w: 0.6690724}
-  m_LocalPosition: {x: -0.08500013, y: 1.386, z: -1.2140005}
+  m_LocalPosition: {x: -0.16, y: 1.29, z: -1.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2483386758380522828}
@@ -57,7 +57,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3349587691512118738}
-  m_LocalRotation: {x: -0, y: -0.7245164, z: -0, w: 0.6892576}
+  m_LocalRotation: {x: 0, y: -0.72451484, z: 0, w: 0.6892593}
   m_LocalPosition: {x: 8.890655, y: 0, z: -2.1768363}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -129,6 +129,7 @@ MonoBehaviour:
   WorkRequired: 0
   WorkDone: 0
   Continuous: 1
+  MaxStress: 100
   Type: 3
 --- !u!1001 &2814383134717428606
 PrefabInstance:
@@ -185,6 +186,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300006, guid: 3ac39974cc403453fb2180bda5781733, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a97630fb8cd3104b8072ce5525b2841, type: 2}
+    - target: {fileID: 2300004, guid: 3ac39974cc403453fb2180bda5781733, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a97630fb8cd3104b8072ce5525b2841, type: 2}
+    - target: {fileID: 2300002, guid: 3ac39974cc403453fb2180bda5781733, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a97630fb8cd3104b8072ce5525b2841, type: 2}
+    - target: {fileID: 2300000, guid: 3ac39974cc403453fb2180bda5781733, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a97630fb8cd3104b8072ce5525b2841, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ac39974cc403453fb2180bda5781733, type: 3}
 --- !u!4 &2814383134717041150 stripped

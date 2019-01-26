@@ -4776,9 +4776,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectName: Washing Machine
+  Breakable: 1
   CurrentInteraction: {fileID: 0}
   State:
     Name: Good
+  lockPosition: {fileID: 0}
 --- !u!114 &8022539682291012819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4795,6 +4797,9 @@ MonoBehaviour:
   Cost: 1
   WorkRequired: 3
   WorkDone: 0
+  Continuous: 0
+  MaxStress: 75
+  Type: 0
 --- !u!114 &1184997272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4811,6 +4816,9 @@ MonoBehaviour:
   Cost: 2
   WorkRequired: 1
   WorkDone: 0
+  Continuous: 0
+  MaxStress: 25
+  Type: 0
 --- !u!1001 &8022539680876472810
 PrefabInstance:
   m_ObjectHideFlags: 0

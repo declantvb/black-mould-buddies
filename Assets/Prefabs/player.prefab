@@ -292,6 +292,8 @@ MonoBehaviour:
   needToilet: 0
   needFood: 0
   needSleep: 0
+  chilling: 0
+  sleeping: 0
 --- !u!1 &5302652507237534984
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,15 +426,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400012, guid: f6aa67d191a8722478ecaa6aaf437fc9, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 400012, guid: f6aa67d191a8722478ecaa6aaf437fc9, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 400012, guid: f6aa67d191a8722478ecaa6aaf437fc9, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6aa67d191a8722478ecaa6aaf437fc9, type: 3}

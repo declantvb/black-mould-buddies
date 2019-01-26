@@ -36,6 +36,12 @@ public class Interactor : MonoBehaviour
 	{
 		if (!menuOpen && selectedItem >= 0)
 		{
+			if (!currentList[selectedItem].CanWork(mystatus))
+			{
+				StopInteracting();
+				return;
+			}
+
 			var complete = interactible.Interact(mystatus, currentList[selectedItem], Time.deltaTime);
 			if (complete)
 			{
@@ -108,9 +114,10 @@ public class Interactor : MonoBehaviour
 
 			foreach (var collider in colliders.OrderBy(c => (myTransform.position + myTransform.forward - c.transform.position).sqrMagnitude))
 			{
-				interactible = collider.GetComponentInParent<BaseInteractible>();
-				if (interactible != null)
+				var tempInteractible = collider.GetComponentInParent<BaseInteractible>();
+				if (tempInteractible != null)
 				{
+					interactible = tempInteractible;
 					currentList = interactible.GetInteractions();
 
 					buildmenu();
@@ -166,8 +173,6 @@ public class Interactor : MonoBehaviour
 			var newOption = Instantiate(optionPrefab, menuPanel);
 			var transform1 = newOption.GetComponent<RectTransform>();
 			transform1.localPosition = new Vector3(0, pos, 0);
-			newOption.GetComponentInChildren<Text>().text = item.Name;
-			newOption.GetComponent<Image>().color = Color.white;
 			newMenuOptions.Add(newOption);
 			pos -= 40;
 		}
@@ -175,6 +180,27 @@ public class Interactor : MonoBehaviour
 		menuOptions = newMenuOptions.ToArray();
 		selectedItem = 0;
 		selectItem(selectedItem);
+	}
+
+	private void updatemenu()
+	{
+		for (int i = 0; i < menuOptions.Length; i++)
+		{
+			var item = menuOptions[i];
+			var interaction = currentList[i];
+			var selected = selectedItem == i;
+
+			if (interaction.CanWork(mystatus))
+			{
+				item.GetComponent<Image>().color = selected ? Color.cyan : Color.white;
+				item.GetComponentInChildren<Text>().text = $"{interaction.Name}";
+			}
+			else
+			{
+				item.GetComponent<Image>().color = Color.red;
+				item.GetComponentInChildren<Text>().text = $"{interaction.Name} (X)";
+			}
+		}
 	}
 
 	private void selectItem(int newSelection)
@@ -187,14 +213,10 @@ public class Interactor : MonoBehaviour
 		{
 			newSelection += menuOptions.Length;
 		}
-
-		var oldItem = menuOptions[selectedItem];
-		oldItem.GetComponent<Image>().color = Color.white;
-
-		var item = menuOptions[newSelection];
-		item.GetComponent<Image>().color = Color.cyan;
-
+		
 		selectedItem = newSelection;
+
+		updatemenu();
 	}
 
 	private void destroymenu()

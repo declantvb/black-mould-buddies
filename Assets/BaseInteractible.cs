@@ -62,6 +62,7 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 				CurrentInteraction = type;
 			}
 		}
+
 		CurrentInteraction.DoWork(status, workAmount);
 
 		if (CurrentInteraction.Done)
