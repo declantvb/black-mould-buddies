@@ -66,7 +66,7 @@ public class PlayerStatus : MonoBehaviour
             m.startColor = stressRate > 0 ? Color.red : Color.green;
             particles.Emit(Mathf.Abs(stressRate));
 
-            var stressLevel = Mathf.Clamp(Mathf.FloorToInt(stress / (float)(MAX_STRESS+1) * stressLevelFaces.Length), 0, stressLevelFaces.Length);
+            var stressLevel = Mathf.Clamp(Mathf.FloorToInt(stress / (float)(MAX_STRESS+1) * stressLevelFaces.Length), 0, stressLevelFaces.Length - 1);
             face.sprite = stressLevelFaces[stressLevel];
 		}
 
