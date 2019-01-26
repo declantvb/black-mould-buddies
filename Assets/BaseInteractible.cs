@@ -40,7 +40,7 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	{
 		//myRenderer.material.color = State == States.Broken ? Color.red : Color.blue;
 		if (ui != null) {
-			ui.FillAmount = CurrentInteraction != null
+			ui.FillAmount = (CurrentInteraction != null && !CurrentInteraction.Continuous)
 				? Mathf.Clamp(CurrentInteraction.WorkDone / CurrentInteraction.WorkRequired, 0, 1)
 				: 0;
 		}
@@ -65,9 +65,9 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 			}
 		}
 
-		CurrentInteraction.DoWork(status, workAmount);
+		CurrentInteraction?.DoWork(status, workAmount);
 
-		if (CurrentInteraction.Done)
+		if (CurrentInteraction?.Done ?? false)
 		{
 			EndCleanupInteraction(status);
 			return true;

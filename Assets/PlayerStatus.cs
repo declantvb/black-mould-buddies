@@ -23,12 +23,14 @@ public class PlayerStatus : MonoBehaviour
 
     public Household household;
     private SpriteRenderer face;
+    private ParticleSystem particles;
 
     // Start is called before the first frame update
     void Start()
     {
         household = FindObjectsOfType<MonoBehaviour>().OfType<Household>().First();
         face = transform.Find("FacialExpression").GetComponent<SpriteRenderer>();
+        particles = GetComponent<ParticleSystem>();
     }
 
     private void FixedUpdate() {
@@ -54,7 +56,14 @@ public class PlayerStatus : MonoBehaviour
             lifeStressTimer += LIFE_STRESS_TIME;
 
             if (Random.value > 0.7f) needFood += 1;
-            if (Random.value > 0.7f) needToilet += 1; 
+            if (Random.value > 0.7f) needToilet += 1;
+
+            stress += stressRate;
+
+            var m = particles.main;
+            m.startColor = stressRate > 0 ? Color.red : Color.green;
+            particles.Emit(Mathf.Abs(stressRate));
+
         }
 
 

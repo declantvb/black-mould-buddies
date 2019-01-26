@@ -34,7 +34,7 @@ public class Interactor : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (currentList != null && selectedItem > currentList.Length) selectedItem = -1;
+		if (currentList == null || selectedItem > currentList.Length) selectedItem = -1;
 
 		if (!menuOpen && selectedItem >= 0)
 		{
