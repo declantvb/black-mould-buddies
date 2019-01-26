@@ -10,6 +10,7 @@ public class Interaction : MonoBehaviour
 	public float WorkRequired = 1;
 	public float WorkDone;
 	public bool Continuous;
+	public int MaxStress;
 
 	public InteractionType Type;
 	

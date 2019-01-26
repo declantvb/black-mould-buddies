@@ -12,8 +12,10 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	}
 
 	public string ObjectName;
+	public bool Breakable = true;
 	public Interaction CurrentInteraction;
 	public ObjectState State = States.Good;
+	public Transform lockPosition;
 
 	//private MeshRenderer[] myRenderers;
 	private Interaction[] interactions;
@@ -22,6 +24,7 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	private WorkProgress ui;
 
 	public string Name => ObjectName;
+
 
 	void Start()
 	{
@@ -84,13 +87,16 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 
 	public virtual void Break()
 	{
-		State = States.Broken;
-		ps?.gameObject.SetActive(true);
+		if (Breakable)
+		{
+			State = States.Broken;
+			ps?.gameObject.SetActive(true); 
+		}
 	}
 
 	public void StopInteracting(PlayerStatus status)
 	{
-		if (CurrentInteraction.Continuous)
+		if (CurrentInteraction?.Continuous ?? false)
 		{
 			EndCleanupInteraction(status);
 		}

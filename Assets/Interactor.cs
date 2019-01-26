@@ -16,10 +16,12 @@ public class Interactor : MonoBehaviour
 	private Interaction[] currentList;
 	private bool clicked;
 	private bool menuOpen;
-	private IInteractible interactible;
+	private BaseInteractible interactible;
 	private bool selectChanged;
 	private GameObject[] menuOptions;
 	private int selectedItem = -1;
+	private Vector3 oldPosition;
+	private Quaternion oldRotation;
 
 	// Start is called before the first frame update
 	void Start()
@@ -38,6 +40,7 @@ public class Interactor : MonoBehaviour
 			if (complete)
 			{
 				StopInteracting();
+				return;
 			}
 
 			var inputX = Input.GetAxis("Horizontal" + myplayer.Player);
@@ -91,6 +94,10 @@ public class Interactor : MonoBehaviour
 	{
 		selectedItem = -1;
 		interactible.StopInteracting(mystatus);
+		if (interactible.lockPosition != null)
+		{
+			unlockplayer(); 
+		}
 	}
 
 	private bool handleclick()
@@ -101,7 +108,7 @@ public class Interactor : MonoBehaviour
 
 			foreach (var collider in colliders.OrderBy(c => (myTransform.position + myTransform.forward - c.transform.position).sqrMagnitude))
 			{
-				interactible = collider.GetComponentInParent<IInteractible>();
+				interactible = collider.GetComponentInParent<BaseInteractible>();
 				if (interactible != null)
 				{
 					currentList = interactible.GetInteractions();
@@ -114,9 +121,35 @@ public class Interactor : MonoBehaviour
 		else
 		{
 			destroymenu();
+			if (interactible.lockPosition != null)
+			{
+				lockplayer(interactible.lockPosition); 
+			}
 			return true;
 		}
 		return false;
+	}
+
+	private void lockplayer(Transform target)
+	{
+		oldPosition = transform.position;
+		oldRotation = transform.rotation;
+
+		GetComponent<Rigidbody>().isKinematic = true;
+
+		transform.position = target.position;
+		transform.rotation = target.rotation;
+
+		myplayer.Locked = true;
+	}
+
+	private void unlockplayer()
+	{
+		transform.position = oldPosition;
+		transform.rotation = oldRotation;
+
+		GetComponent<Rigidbody>().isKinematic = false;
+		myplayer.Locked = false;
 	}
 
 	private void buildmenu()
