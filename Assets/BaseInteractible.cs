@@ -20,16 +20,18 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 
 	public ObjectState State = States.Good;
 	public Transform lockPosition;
+	public AudioSource AudioBreak;
+	public AudioSource AudioFixing;
 
 	//private MeshRenderer[] myRenderers;
 	private Interaction[] interactions;
 	private Household household;
 	private ParticleSystem ps;
 	private WorkProgress ui;
+	public bool alreadyBeingUsed(PlayerStatus status) => CurrentPlayer != status && interactionTimeout > 0;
 
 	public string Name => ObjectName;
-
-
+	
 	void Start()
 	{
 		//myRenderers = GetComponentsInChildren<MeshRenderer>();
@@ -38,11 +40,15 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 		household = FindObjectOfType<Household>();
 		ps = GetComponentInChildren<ParticleSystem>();
 		ps?.gameObject.SetActive(false);
+		
+		// Break everything for testing
+//		Break();
 	}
 
 	void Update()
 	{
-		interactionTimeout -= Time.deltaTime;
+		if(!CurrentInteraction?.Continuous ?? true)
+			interactionTimeout -= Time.deltaTime;
 
 		if (interactionTimeout < 0)
 		{
@@ -66,7 +72,7 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 
 	public bool Interact(PlayerStatus status, Interaction type, float workAmount)
 	{
-		if (CurrentPlayer != status && interactionTimeout > 0)
+		if (alreadyBeingUsed(status))
 		{
 			return false;
 		}
@@ -79,6 +85,9 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 				household.Money -= type.Cost;
 				CurrentInteraction = type;
 				CurrentPlayer = status;
+				
+				if (AudioFixing != null)
+					AudioFixing.Play();
 			}
 			else
 			{
@@ -105,6 +114,12 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 		{
 			State = States.Good;
 			ps?.gameObject.SetActive(false);
+
+			if (AudioBreak != null)
+				StartCoroutine(FadeOut(AudioBreak, 1f));
+			
+			if (AudioFixing != null)
+				StartCoroutine(FadeOut(AudioFixing, 0.5f));
 		}
 		CurrentInteraction.ResetToDefaults();
 		CurrentInteraction = null;
@@ -116,17 +131,42 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 		if (Breakable)
 		{
 			State = States.Broken;
-			ps?.gameObject.SetActive(true); 
+			ps?.gameObject.SetActive(true);
+			if (AudioBreak != null)
+				AudioBreak.Play();
 		}
 	}
 
 	public void StopInteracting(PlayerStatus status)
 	{
+		if (status != CurrentPlayer) return;
+
 		if (CurrentInteraction?.Continuous ?? false)
 		{
 			EndCleanupInteraction(status);
 		}
+		else if(CurrentInteraction.Name == "Fix")
+		{
+			if (AudioBreak != null)
+				StartCoroutine(FadeOut(AudioBreak, 1f));
+
+			if (AudioFixing != null)
+				StartCoroutine(FadeOut(AudioFixing, 0.5f));
+		}
 		CurrentInteraction = null;
 		CurrentPlayer = null;
 	}
+
+	private IEnumerator FadeOut(AudioSource audioSource, float FadeTime)
+     	{
+     		float startVolume = audioSource.volume;
+     		while (audioSource.volume > 0)
+     		{
+     			audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
+     			Debug.Log(audioSource.volume);
+     			yield return null;
+     		}
+     		audioSource.Stop();
+     		audioSource.volume = startVolume;
+     	}
 }
