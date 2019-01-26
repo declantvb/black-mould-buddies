@@ -7,7 +7,7 @@ public class Interactor : MonoBehaviour
 {
 	private Transform myTransform;
 
-	private string[] currentList;
+	private Interaction[] currentList;
 	private bool clicked;
 
 	// Start is called before the first frame update
@@ -23,7 +23,7 @@ public class Interactor : MonoBehaviour
 		{
 			if (!clicked)
 			{
-				var colliders = Physics.OverlapSphere(myTransform.position + myTransform.forward, 1);
+				var colliders = Physics.OverlapSphere(myTransform.position + myTransform.forward, 2);
 
 				foreach (var collider in colliders.OrderBy(c => (myTransform.position + myTransform.forward - c.transform.position).sqrMagnitude))
 				{
@@ -31,7 +31,7 @@ public class Interactor : MonoBehaviour
 					if (interactible != null)
 					{
 						currentList = interactible.GetInteractions();
-						Debug.Log("current list : " + string.Join(",", currentList));
+						Debug.Log("current list : " + string.Join(",", currentList.Select(x => x.Name)));
 
 						var complete = interactible.Interact(currentList[0], Time.deltaTime);
 						clicked = complete;

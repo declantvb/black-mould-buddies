@@ -1,7 +1,12 @@
 ﻿public interface IInteractible
 {
-	string[] GetInteractions();
+	Interaction[] GetInteractions();
 
-	bool Interact(string type, float workAmount);
+	bool Interact(Interaction type, float workAmount);
 	void Break();
+}
+
+public class ObjectState
+{
+	public string Name { get; set; }
 }
