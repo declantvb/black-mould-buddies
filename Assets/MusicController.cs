@@ -8,6 +8,7 @@ public class MusicController : MonoBehaviour
     public CrossfadeMixers crossfader;
     public AudioMixer calm;
     public AudioMixer stress;
+    public AudioSource stingSource;
 
     public float bpm = 130;
 
@@ -18,7 +19,7 @@ public class MusicController : MonoBehaviour
     void Start()
     {
         _quarterNote = 60 / bpm;
-        _transitionToStress = _quarterNote * 4;
+        _transitionToStress = _quarterNote * 2;
         _transitionToCalm = _quarterNote * 8;
     }
 
@@ -38,6 +39,7 @@ public class MusicController : MonoBehaviour
     void GoStress()
     {
         crossfader.CrossfadeSnapshots(calm, stress, _transitionToStress);
+        stingSource.Play();
     }
 
     void GoCalm()

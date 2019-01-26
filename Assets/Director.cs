@@ -24,6 +24,7 @@ public class Director : MonoBehaviour
 
 			var inter = Interactibles[Random.Range(0, Interactibles.Length - 1)];
 			inter.Break();
+			Debug.Log($"broke {inter.Name}");
 		}
 	}
 }
