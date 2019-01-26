@@ -39,7 +39,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6734774035498192339}
   m_LocalRotation: {x: -0, y: 0.9998726, z: -0.015959557, w: 0}
-  m_LocalPosition: {x: 7.17, y: 2.29, z: -1.35}
+  m_LocalPosition: {x: 0, y: 2.29, z: -1.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7392273095876685843}
@@ -4787,6 +4787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828cf6814930445dfa307b1fe2e6e858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ObjectName: Fridge
   CurrentInteraction: {fileID: 0}
 --- !u!114 &1189181450225525305
 MonoBehaviour:
@@ -4815,17 +4816,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: fridge
       objectReference: {fileID: 0}
-    - target: {fileID: 100006, guid: 3e734e59f8d535748ad987a5b94a36d3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 3e734e59f8d535748ad987a5b94a36d3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 3e734e59f8d535748ad987a5b94a36d3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 3e734e59f8d535748ad987a5b94a36d3, type: 3}
       propertyPath: m_LocalPosition.z
