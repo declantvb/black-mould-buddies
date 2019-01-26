@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828cf6814930445dfa307b1fe2e6e858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectName: 
+  ObjectName: Letter
   Breakable: 0
   CurrentInteraction: {fileID: 0}
   State:

@@ -13,6 +13,7 @@ public class Director : MonoBehaviour
 	void Start()
 	{
 		Interactibles = GameObject.FindObjectsOfType<MonoBehaviour>().OfType<IInteractible>().ToArray();
+		//Time.timeScale = 0;
 	}
 
 	void FixedUpdate()

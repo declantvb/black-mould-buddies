@@ -25,7 +25,7 @@ public class Household : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Hour += Time.deltaTime * 10;
+        Hour += Time.deltaTime * 2;
 		label.text = $"${Money}";
         timeLabel.text = $"{Mathf.FloorToInt(Hour * 2)}";
         if (Hour > 50)
