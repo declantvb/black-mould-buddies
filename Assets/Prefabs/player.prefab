@@ -60,8 +60,8 @@ Rigidbody:
   m_GameObject: {fileID: 4466338209456255623}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 1
+  m_AngularDrag: 0.5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
@@ -79,6 +79,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cbab1ee06692f041b3b2d28fccc445a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: 
+  MovementSpeed: 5
+  RotationSpeed: 800
 --- !u!114 &4466338209456255630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,6 +107,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stress: 10
+  needToilet: 0
+  needFood: 0
+  needSleep: 0
 --- !u!1 &4466338209625995699
 GameObject:
   m_ObjectHideFlags: 0

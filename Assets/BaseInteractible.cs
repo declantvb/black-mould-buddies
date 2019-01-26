@@ -14,22 +14,25 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 
 	public ObjectState State = States.Good;
 
-	private MeshRenderer myRenderer;
+	//private MeshRenderer[] myRenderers;
 	private Interaction[] interactions;
 	private Household household;
+	private ParticleSystem ps;
 	private WorkProgress ui;
 
 	void Start()
 	{
-		myRenderer = GetComponent<MeshRenderer>();
+		//myRenderers = GetComponentsInChildren<MeshRenderer>();
 		ui = GetComponent<WorkProgress>();
 		interactions = GetComponents<Interaction>();
 		household = FindObjectOfType<Household>();
+		ps = GetComponentInChildren<ParticleSystem>();
+		ps?.Stop();
 	}
 
 	void Update()
 	{
-		myRenderer.material.color = State == States.Broken ? Color.red : Color.blue;
+		//myRenderer.material.color = State == States.Broken ? Color.red : Color.blue;
 		ui.FillAmount = State != States.Good && CurrentInteraction != null
 			? Mathf.Clamp(CurrentInteraction.WorkDone / CurrentInteraction.WorkRequired, 0, 1)
 			: 0;
@@ -55,9 +58,13 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 
 		if (CurrentInteraction.Done)
 		{
+			if (CurrentInteraction.Name == "Fix")
+			{
+				State = States.Good;
+				ps?.Stop(); 
+			}
 			CurrentInteraction?.ResetToDefaults();
 			CurrentInteraction = null;
-			State = States.Good;
 			return true; 
 		}
 
@@ -67,5 +74,6 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	public virtual void Break()
 	{
 		State = States.Broken;
+		ps?.Play();
 	}
 }
