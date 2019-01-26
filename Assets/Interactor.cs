@@ -202,16 +202,13 @@ public class Interactor : MonoBehaviour
 			var interaction = currentList[i];
 			var selected = selectedItem == i;
 
-			if (interaction.CanWork(mystatus))
-			{
-				item.GetComponent<Image>().color = selected ? Color.cyan : Color.white;
-				item.GetComponentInChildren<Text>().text = $"{interaction.Name}";
-			}
-			else
-			{
-				item.GetComponent<Image>().color = Color.red;
-				item.GetComponentInChildren<Text>().text = $"{interaction.Name} (X)";
-			}
+			bool canwork = interaction.CanWork(mystatus);
+			bool havMoney = household.Money >= interaction.Cost;
+			item.GetComponent<Image>().color = !(canwork && havMoney) ? Color.red : selected ? Color.cyan : Color.white;
+
+			string stressText = canwork ? string.Empty : " (stress)";
+			string moneyText = havMoney ? string.Empty : " (cash)";
+			item.GetComponentInChildren<Text>().text = $"{interaction.Name}{stressText}{moneyText}";
 		}
 	}
 
