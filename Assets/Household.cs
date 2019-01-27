@@ -17,12 +17,14 @@ public class Household : MonoBehaviour
     public Transform mailman;
     public Director director;
     private IEnumerable<PlayerStatus> players;
+    private MusicController music;
     public GameObject letterPrefab;
     private Light[] lights;
     public int paychecks = 0;
     private bool lightsOut;
     public AudioSource AudioLight;
     public AudioSource AudioLetter;
+    private bool stressed;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,7 @@ public class Household : MonoBehaviour
         mailman = transform.Find("Mailman").transform;
         director = FindObjectsOfType<MonoBehaviour>().OfType<Director>().First();
         players = FindObjectsOfType<MonoBehaviour>().OfType<PlayerStatus>();
+        music = FindObjectsOfType<MonoBehaviour>().OfType<MusicController>().First();
     }
 
     // Update is called once per frame
@@ -67,7 +70,16 @@ public class Household : MonoBehaviour
 
         var stressAvg = players.Average((a) => a.stress);
         Debug.Log(stressAvg);
-        // JACK DO HERE
+        if (stressed && stressAvg < 46)
+        {
+            stressed = false;
+            music.GoCalm();
+        }
+        if (!stressed && stressAvg > 53)
+        {
+            stressed = true;
+            music.GoStress();
+        }
     }
 
     private IEnumerator HourTick(int lastHour)

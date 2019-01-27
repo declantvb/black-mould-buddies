@@ -38,7 +38,7 @@ public class MusicController : MonoBehaviour
         }
     }
 
-    void GoStress()
+    public void GoStress()
     {
         if (_isCalm)
         {
@@ -48,7 +48,7 @@ public class MusicController : MonoBehaviour
         }
     }
 
-    void GoCalm()
+    public void GoCalm()
     {
         if (!_isCalm)
         {
