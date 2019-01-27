@@ -22,6 +22,7 @@ public class PlayerStatus : MonoBehaviour
 	public bool sleeping;
 
     public Sprite[] stressLevelFaces;
+    public Sprite sleepFace;
 
     public Household household;
     public SpriteRenderer face;
@@ -64,7 +65,10 @@ public class PlayerStatus : MonoBehaviour
             removeStress(-stressRate);
 
             var stressLevel = Mathf.Clamp(Mathf.FloorToInt(stress / (float)(MAX_STRESS+1) * stressLevelFaces.Length), 0, stressLevelFaces.Length-1);
-            face.sprite = stressLevelFaces[stressLevel];
+            if (!sleeping)
+            {
+                face.sprite = stressLevelFaces[stressLevel];   
+            }
         }
 
 
