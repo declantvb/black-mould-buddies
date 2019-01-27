@@ -277,6 +277,9 @@ MonoBehaviour:
   lockPosition: {fileID: 0}
   AudioBreak: {fileID: 0}
   AudioFixing: {fileID: 0}
+  AudioPee: {fileID: 0}
+  AudioShower: {fileID: 0}
+  AudioCooking: {fileID: 0}
 --- !u!114 &6047935786186550461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,11 +295,15 @@ MonoBehaviour:
   Name: Drink
   Cost: 25
   StressCost: 0
-  WorkRequired: 1
+  WorkRequired: 0.1
   WorkDone: 0
   Continuous: 0
   Cancelable: 1
   MaxStress: 200
+  ThrowPrefab: {fileID: 2101204562103278468, guid: 0c0d4d16409ea02409b0791c8144293d,
+    type: 3}
+  throwForceMultiplier: 150
+  throwTorqueMultiplier: 10
   Type: 5
 --- !u!1001 &1322343567047069908
 PrefabInstance:
