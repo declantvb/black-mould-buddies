@@ -25,6 +25,7 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	public AudioSource AudioPee;
 	public AudioSource AudioShower;
 	public AudioSource AudioCooking;
+	public AudioSource AudioFridge;
 
 	//private MeshRenderer[] myRenderers;
 	private Interaction[] interactions;
@@ -104,6 +105,10 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 				{
 					if(AudioCooking != null)
 						AudioCooking.Play();
+				}else if (CurrentInteraction.Name == "Refill")
+				{
+					if(AudioFridge != null)
+						AudioFridge.Play();
 				}
 			}
 			else
@@ -197,6 +202,7 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 			StartCoroutine(FadeOut(AudioShower, 0.5f));
 		if (inter.Name == "Cook" && AudioCooking != null)
 			StartCoroutine(FadeOut(AudioCooking, 0.5f));
-
+		if (inter.Name == "Refill" && AudioFridge != null)
+			StartCoroutine(FadeOut(AudioFridge, 0.5f));
 	}
 }
