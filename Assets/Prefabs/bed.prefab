@@ -71,6 +71,10 @@ MonoBehaviour:
   lockPosition: {fileID: 1018656683858508249}
   AudioBreak: {fileID: 0}
   AudioFixing: {fileID: 0}
+  AudioPee: {fileID: 0}
+  AudioShower: {fileID: 0}
+  AudioCooking: {fileID: 0}
+  AudioFridge: {fileID: 0}
 --- !u!114 &4801136785898622931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,6 +95,9 @@ MonoBehaviour:
   Continuous: 1
   Cancelable: 1
   MaxStress: 200
+  ThrowPrefab: {fileID: 0}
+  throwForceMultiplier: 0
+  throwTorqueMultiplier: 0
   Type: 4
 --- !u!65 &6641034468274034261
 BoxCollider:
@@ -100,7 +107,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6133980750143190000}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 4, z: 1}
@@ -176,6 +183,10 @@ MonoBehaviour:
   lockPosition: {fileID: 7212791195314867289}
   AudioBreak: {fileID: 0}
   AudioFixing: {fileID: 0}
+  AudioPee: {fileID: 0}
+  AudioShower: {fileID: 0}
+  AudioCooking: {fileID: 0}
+  AudioFridge: {fileID: 0}
 --- !u!114 &9221816489139832019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +207,9 @@ MonoBehaviour:
   Continuous: 1
   Cancelable: 1
   MaxStress: 200
+  ThrowPrefab: {fileID: 0}
+  throwForceMultiplier: 0
+  throwTorqueMultiplier: 0
   Type: 4
 --- !u!65 &8295191806187998105
 BoxCollider:

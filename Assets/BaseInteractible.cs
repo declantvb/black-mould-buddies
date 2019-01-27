@@ -85,10 +85,10 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 			if (household.Money >= type.Cost && status.stressBalance > type.StressCost)
 			{
 				household.Money -= type.Cost;
-				status.stress += type.StressCost;
 				CurrentInteraction = type;
 				CurrentPlayer = status;
 
+				Debug.Log("start work " + status.GetComponent<CharacterController>().Player);
 				if (CurrentInteraction.Name == "Fix")
 				{
 					if (AudioFixing != null)
@@ -132,7 +132,9 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	private void EndCleanupInteraction(PlayerStatus status)
 	{
 		if (Random.value < 0.2f) Break();
+		status.stress += CurrentInteraction.StressCost;
 
+		Debug.Log("end work " + status.GetComponent<CharacterController>().Player);
 		CurrentInteraction.FinishWork(status);
 		if (CurrentInteraction.Name == "Fix")
 		{
@@ -187,7 +189,7 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 		while (audioSource.volume > 0)
 		{
 			audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
-			Debug.Log(audioSource.volume);
+			//Debug.Log(audioSource.volume);
 			yield return null;
 		}
 		audioSource.Stop();

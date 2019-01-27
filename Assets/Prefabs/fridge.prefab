@@ -4806,12 +4806,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Fix
   Cost: 0
-  StressCost: 20
+  StressCost: 10
   WorkRequired: 3
   WorkDone: 0
   Continuous: 0
   Cancelable: 1
-  MaxStress: 75
+  MaxStress: 50
+  ThrowPrefab: {fileID: 0}
+  throwForceMultiplier: 0
+  throwTorqueMultiplier: 0
   Type: 0
 --- !u!114 &597998709
 MonoBehaviour:
@@ -4826,13 +4829,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Refill
-  Cost: 5
+  Cost: 15
   StressCost: 0
   WorkRequired: 1
   WorkDone: 0
   Continuous: 0
   Cancelable: 1
-  MaxStress: 50
+  MaxStress: 200
+  ThrowPrefab: {fileID: 0}
+  throwForceMultiplier: 0
+  throwTorqueMultiplier: 0
   Type: 2
 --- !u!82 &8790841863772761790
 AudioSource:
@@ -5132,6 +5138,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7392273095876685843}
     m_Modifications:
+    - target: {fileID: 100006, guid: 3e734e59f8d535748ad987a5b94a36d3, type: 3}
+      propertyPath: m_Name
+      value: fridge
+      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 3e734e59f8d535748ad987a5b94a36d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5176,15 +5186,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 100006, guid: 3e734e59f8d535748ad987a5b94a36d3, type: 3}
-      propertyPath: m_Name
-      value: fridge
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300002, guid: 3e734e59f8d535748ad987a5b94a36d3, type: 3}
+    - target: {fileID: 2300004, guid: 3e734e59f8d535748ad987a5b94a36d3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7d13fd3a4ac20c945b9b7077a0d84a0f, type: 2}
-    - target: {fileID: 2300004, guid: 3e734e59f8d535748ad987a5b94a36d3, type: 3}
+    - target: {fileID: 2300002, guid: 3e734e59f8d535748ad987a5b94a36d3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7d13fd3a4ac20c945b9b7077a0d84a0f, type: 2}

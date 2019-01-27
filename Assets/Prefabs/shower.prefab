@@ -92,6 +92,8 @@ MonoBehaviour:
   AudioFixing: {fileID: 2254706883231154519}
   AudioPee: {fileID: 0}
   AudioShower: {fileID: 2039470774306796417}
+  AudioCooking: {fileID: 0}
+  AudioFridge: {fileID: 0}
 --- !u!114 &3374905000943582999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,12 +108,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Fix
   Cost: 0
-  StressCost: 20
+  StressCost: 10
   WorkRequired: 3
   WorkDone: 0
   Continuous: 0
   Cancelable: 1
-  MaxStress: 75
+  MaxStress: 50
+  ThrowPrefab: {fileID: 0}
+  throwForceMultiplier: 0
+  throwTorqueMultiplier: 0
   Type: 0
 --- !u!114 &7911546476872982499
 MonoBehaviour:
@@ -133,6 +138,9 @@ MonoBehaviour:
   Continuous: 0
   Cancelable: 1
   MaxStress: 90
+  ThrowPrefab: {fileID: 0}
+  throwForceMultiplier: 0
+  throwTorqueMultiplier: 0
   Type: 1
 --- !u!82 &7280555587550307101
 AudioSource:
@@ -5187,6 +5195,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: eb7819b4e2d7fab4bb116aafe150f084, type: 2}
     - target: {fileID: 13700000, guid: 1d101760f869c46e5a584ae77816c6a1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: eb7819b4e2d7fab4bb116aafe150f084, type: 2}
+    - target: {fileID: 13700000, guid: 1d101760f869c46e5a584ae77816c6a1, type: 3}
       propertyPath: m_AABB.m_Center.x
       value: -6.406247
       objectReference: {fileID: 0}
@@ -5214,10 +5226,6 @@ PrefabInstance:
       propertyPath: m_DirtyAABB
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 13700000, guid: 1d101760f869c46e5a584ae77816c6a1, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: eb7819b4e2d7fab4bb116aafe150f084, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d101760f869c46e5a584ae77816c6a1, type: 3}
 --- !u!4 &5176797086260709926 stripped

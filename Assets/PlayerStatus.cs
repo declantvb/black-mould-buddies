@@ -42,16 +42,20 @@ public class PlayerStatus : MonoBehaviour
         stressRate = 1;
         
         if (needToilet >= NEED_TOILET_MAX) stressRate += 1;
-        if (needFood >= NEED_TOILET_MAX) stressRate += 1;
-        if (chilling) stressRate -= 2;
+        if (needFood >= NEED_FOOD_MAX) stressRate += 1;
+        if (chilling) stressRate -= 4;
 
         if (sleepyTime){
             if (sleeping) {
-                stressRate -= 6;
+                stressRate -= 8;
             } else {
                 stressRate += 1;
             }
         }
+		else if (sleeping)
+		{
+			stressRate -= 4;
+		}
 
         // Life is hard
         lifeStressTimer -= Time.fixedDeltaTime;

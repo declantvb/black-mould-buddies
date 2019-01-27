@@ -67,6 +67,7 @@ public class Interactor : MonoBehaviour
 		{
 			if (!clicked)
 			{
+				Debug.Log("Fire" + myplayer.Player);
 				clicked = handleclick();
 			}
 		}
@@ -142,6 +143,7 @@ public class Interactor : MonoBehaviour
 			destroymenu();
 			if (interactible.alreadyBeingUsed(mystatus))
 			{
+				Debug.Log("ABORT");
 				selectedItem = -1;
 			}
 			else if (interactible.lockPosition != null)

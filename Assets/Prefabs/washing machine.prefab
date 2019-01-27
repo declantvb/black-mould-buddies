@@ -4787,6 +4787,10 @@ MonoBehaviour:
   lockPosition: {fileID: 0}
   AudioBreak: {fileID: 8858516925388716512}
   AudioFixing: {fileID: 1442014132735838093}
+  AudioPee: {fileID: 0}
+  AudioShower: {fileID: 0}
+  AudioCooking: {fileID: 0}
+  AudioFridge: {fileID: 0}
 --- !u!114 &8022539682291012819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4801,12 +4805,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Fix
   Cost: 0
-  StressCost: 20
+  StressCost: 10
   WorkRequired: 3
   WorkDone: 0
   Continuous: 0
   Cancelable: 1
-  MaxStress: 75
+  MaxStress: 50
+  ThrowPrefab: {fileID: 0}
+  throwForceMultiplier: 0
+  throwTorqueMultiplier: 0
   Type: 0
 --- !u!114 &1184997272
 MonoBehaviour:
@@ -4828,6 +4835,9 @@ MonoBehaviour:
   Continuous: 0
   Cancelable: 1
   MaxStress: 25
+  ThrowPrefab: {fileID: 0}
+  throwForceMultiplier: 0
+  throwTorqueMultiplier: 0
   Type: 0
 --- !u!82 &8858516925388716512
 AudioSource:
@@ -5078,6 +5088,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: e08965e2eeeecbe4eb6e53b5f24201a1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 916d470253d8dda4285b8b622a8e3c6b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e08965e2eeeecbe4eb6e53b5f24201a1, type: 3}
 --- !u!4 &8022539680876082030 stripped

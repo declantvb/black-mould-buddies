@@ -69,7 +69,7 @@ public class Household : MonoBehaviour
         }
 
         var stressAvg = players.Average((a) => a.stress);
-        Debug.Log(stressAvg);
+        //Debug.Log(stressAvg);
         if (stressed && stressAvg < 46)
         {
             stressed = false;
