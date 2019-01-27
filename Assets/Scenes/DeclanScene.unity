@@ -713,7 +713,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &705990580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -820,6 +820,31 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3743969428467440021, guid: 98a649f23cd63e242bae35c8381aa04b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e692b3c1cc65ee94ea5fd5064caabddd, type: 2}
+    - target: {fileID: 3743969428467440023, guid: 98a649f23cd63e242bae35c8381aa04b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e692b3c1cc65ee94ea5fd5064caabddd, type: 2}
+    - target: {fileID: 3743969428467440025, guid: 98a649f23cd63e242bae35c8381aa04b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e692b3c1cc65ee94ea5fd5064caabddd, type: 2}
+    - target: {fileID: 3743969428467440029, guid: 98a649f23cd63e242bae35c8381aa04b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e692b3c1cc65ee94ea5fd5064caabddd, type: 2}
+    - target: {fileID: 3743969428467440031, guid: 98a649f23cd63e242bae35c8381aa04b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e692b3c1cc65ee94ea5fd5064caabddd, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98a649f23cd63e242bae35c8381aa04b, type: 3}
 --- !u!1001 &1071960177
@@ -1683,6 +1708,36 @@ PrefabInstance:
       propertyPath: playerStatus
       value: 
       objectReference: {fileID: 1680847713}
+    - target: {fileID: 5202346032221279400, guid: 4077198bfcb624ebd99432eb3a99097b,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.904569
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202346032221279400, guid: 4077198bfcb624ebd99432eb3a99097b,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.6839622
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202346032221279400, guid: 4077198bfcb624ebd99432eb3a99097b,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017024942109122038, guid: 4077198bfcb624ebd99432eb3a99097b,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.6659359
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017024942109122038, guid: 4077198bfcb624ebd99432eb3a99097b,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.9339623
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017024942109122038, guid: 4077198bfcb624ebd99432eb3a99097b,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5360405313002506187, guid: 4077198bfcb624ebd99432eb3a99097b,
         type: 3}
       propertyPath: playerStatus
@@ -2156,6 +2211,11 @@ PrefabInstance:
       propertyPath: Player
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3743969428467440027, guid: 98a649f23cd63e242bae35c8381aa04b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 23e659eb58389fb4eb4c46cf9ee965e0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98a649f23cd63e242bae35c8381aa04b, type: 3}
 --- !u!1001 &4674737470412641098

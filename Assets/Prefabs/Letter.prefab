@@ -78,10 +78,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Open Paycheck
   Cost: 0
+  StressCost: 0
   WorkRequired: 0
   WorkDone: 0
   Continuous: 0
+  Cancelable: 1
   MaxStress: 0
+  ThrowPrefab: {fileID: 0}
+  throwForceMultiplier: 0
+  throwTorqueMultiplier: 0
   Type: 0
   letterName: 
   type: 0
@@ -100,9 +105,17 @@ MonoBehaviour:
   ObjectName: Letter
   Breakable: 0
   CurrentInteraction: {fileID: 0}
+  CurrentPlayer: {fileID: 0}
+  interactionTimeout: 0
   State:
     Name: Good
   lockPosition: {fileID: 0}
+  AudioBreak: {fileID: 0}
+  AudioFixing: {fileID: 0}
+  AudioPee: {fileID: 0}
+  AudioShower: {fileID: 0}
+  AudioCooking: {fileID: 0}
+  AudioFridge: {fileID: 0}
 --- !u!1 &5561653098762245891
 GameObject:
   m_ObjectHideFlags: 0

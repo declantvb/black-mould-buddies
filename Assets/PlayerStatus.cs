@@ -54,7 +54,7 @@ public class PlayerStatus : MonoBehaviour
         }
 		else if (sleeping)
 		{
-			stressRate -= 4;
+			stressRate -= 2;
 		}
 
         // Life is hard

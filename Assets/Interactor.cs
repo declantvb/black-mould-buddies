@@ -56,7 +56,7 @@ public class Interactor : MonoBehaviour
 				var inputX = Input.GetAxis("Horizontal" + myplayer.Player);
 				var inputY = Input.GetAxis("Vertical" + myplayer.Player);
 
-				if (inputX != 0 || inputY != 0)
+				if (new Vector3(inputX, inputY, 0).magnitude > 0.5f)
 				{
 					StopInteracting();
 				} 
