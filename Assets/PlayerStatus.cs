@@ -47,7 +47,7 @@ public class PlayerStatus : MonoBehaviour
 
         if (sleepyTime){
             if (sleeping) {
-                stressRate -= 3;
+                stressRate -= 6;
             } else {
                 stressRate += 1;
             }

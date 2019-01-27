@@ -73,7 +73,7 @@ public class Interaction : MonoBehaviour
 				status.needFood = 0;
 				break;
 			case InteractionType.Drink:
-				status.removeStress(20);
+				status.removeStress(15);
 				break;
 			case InteractionType.None:
 				break;

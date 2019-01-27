@@ -122,6 +122,7 @@ public class Interactor : MonoBehaviour
 				var tempInteractible = collider.GetComponentInParent<BaseInteractible>();
 				if (tempInteractible != null)
 				{
+					if (tempInteractible.alreadyBeingUsed(mystatus)) continue;
 					currentList = tempInteractible.GetInteractions();
 
 					if (currentList.Length == 0)
