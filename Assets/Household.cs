@@ -20,6 +20,9 @@ public class Household : MonoBehaviour
     public GameObject letterPrefab;
     private Light[] lights;
     public int paychecks = 0;
+    private bool lightsOut;
+    public AudioSource AudioLight;
+    public AudioSource AudioLetter;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +51,15 @@ public class Household : MonoBehaviour
             StartCoroutine(HourTick(lastHour));
         }
 
-        var lightsOut = Hour > 35 && Hour < 45;
+        var old = lightsOut;
+        
+        lightsOut = Hour > 35 && Hour < 45;
+
+        if (old != lightsOut)
+        {
+            if (AudioLight != null)
+                AudioLight.Play();
+        }
 
         foreach (var light in lights) {
             light.enabled = !lightsOut;
@@ -122,7 +133,10 @@ public class Household : MonoBehaviour
         letter.GetComponentInChildren<Renderer>().material.color = color;
 
         var rb = letter.GetComponent<Rigidbody>();
-        rb.AddForceAtPosition(mailman.forward * 6 + Random.onUnitSphere * 2, rb.position + Random.onUnitSphere, ForceMode.VelocityChange);
+        rb.AddForceAtPosition(mailman.forward * 8 + Random.onUnitSphere * 2, rb.position + Random.onUnitSphere, ForceMode.VelocityChange);
+        
+        if (AudioLetter != null)
+            AudioLetter.Play();
     }
 
     private void DayPasses()

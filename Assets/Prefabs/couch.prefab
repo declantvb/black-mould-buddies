@@ -64,9 +64,13 @@ MonoBehaviour:
   ObjectName: Couch
   Breakable: 0
   CurrentInteraction: {fileID: 0}
+  CurrentPlayer: {fileID: 0}
+  interactionTimeout: 0
   State:
     Name: Good
   lockPosition: {fileID: 4996706485549795246}
+  AudioBreak: {fileID: 0}
+  AudioFixing: {fileID: 0}
 --- !u!114 &4845309529926947987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,10 +85,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Chill
   Cost: 0
+  StressCost: 0
   WorkRequired: 0
   WorkDone: 0
   Continuous: 1
-  MaxStress: 100
+  Cancelable: 1
+  MaxStress: 200
   Type: 3
 --- !u!65 &3176002071925689449
 BoxCollider:
@@ -163,9 +169,13 @@ MonoBehaviour:
   ObjectName: Couch
   Breakable: 0
   CurrentInteraction: {fileID: 0}
+  CurrentPlayer: {fileID: 0}
+  interactionTimeout: 0
   State:
     Name: Good
   lockPosition: {fileID: 2814383134637996384}
+  AudioBreak: {fileID: 0}
+  AudioFixing: {fileID: 0}
 --- !u!114 &3312954744501644854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,10 +190,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Chill
   Cost: 0
+  StressCost: 0
   WorkRequired: 0
   WorkDone: 0
   Continuous: 1
-  MaxStress: 100
+  Cancelable: 1
+  MaxStress: 200
   Type: 3
 --- !u!65 &4547819301564686525
 BoxCollider:

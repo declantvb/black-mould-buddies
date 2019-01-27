@@ -7,6 +7,7 @@ public class Interaction : MonoBehaviour
 {
 	public string Name;
 	public int Cost = 1;
+	public int StressCost = 1;
 	public float WorkRequired = 1;
 	public float WorkDone;
 	public bool Continuous;
@@ -72,7 +73,7 @@ public class Interaction : MonoBehaviour
 				status.needFood = 0;
 				break;
 			case InteractionType.Drink:
-				status.removeStress(20);
+				status.removeStress(15);
 				break;
 			case InteractionType.Work:
 				status.household.paychecks++;

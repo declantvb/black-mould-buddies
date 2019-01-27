@@ -122,6 +122,7 @@ public class Interactor : MonoBehaviour
 				var tempInteractible = collider.GetComponentInParent<BaseInteractible>();
 				if (tempInteractible != null)
 				{
+					if (tempInteractible.alreadyBeingUsed(mystatus)) continue;
 					currentList = tempInteractible.GetInteractions();
 
 					if (currentList.Length == 0)
@@ -207,7 +208,8 @@ public class Interactor : MonoBehaviour
 
 			bool canwork = interaction.CanWork(mystatus);
 			bool havMoney = household.Money >= interaction.Cost;
-			item.GetComponent<Image>().color = !(canwork && havMoney) ? Color.red : selected ? Color.cyan : Color.white;
+			bool havStress = mystatus.stressBalance >= interaction.StressCost;
+			item.GetComponent<Image>().color = !(canwork && havMoney && havStress) ? Color.red : selected ? Color.cyan : Color.white;
 
 			string stressText = canwork ? string.Empty : " (stress)";
 			string moneyText = havMoney ? string.Empty : " (cash)";
