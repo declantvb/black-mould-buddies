@@ -117,10 +117,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Work
   Cost: 0
-  StressCost: 1
+  StressCost: 20
   WorkRequired: 5
   WorkDone: 0
   Continuous: 0
   Cancelable: 0
   MaxStress: 75
+  ThrowPrefab: {fileID: 0}
+  throwForceMultiplier: 0
+  throwTorqueMultiplier: 0
   Type: 6
