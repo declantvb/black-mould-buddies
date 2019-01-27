@@ -14,8 +14,12 @@ public class Interaction : MonoBehaviour
 	public bool Cancelable = true;
 	public int MaxStress;
 
+	public GameObject ThrowPrefab;
+	public float throwForceMultiplier;
+	public float throwTorqueMultiplier;
+
 	public InteractionType Type;
-	
+
 	public bool Done => !Continuous && WorkDone >= WorkRequired;
 
 	public bool CanWork(PlayerStatus status)
@@ -74,6 +78,13 @@ public class Interaction : MonoBehaviour
 				break;
 			case InteractionType.Drink:
 				status.removeStress(15);
+				Transform transform1 = status.GetComponent<Transform>();
+				doThrowPrefab(
+					transform1.position - transform1.right + Vector3.up * 3,
+					-transform1.forward);
+				break;
+			case InteractionType.Work:
+				status.household.paychecks++;
 				break;
 			case InteractionType.None:
 				break;
@@ -83,6 +94,16 @@ public class Interaction : MonoBehaviour
 		}
 	}
 
+	private void doThrowPrefab(Vector3 pos, Vector3 dir)
+	{
+		var newthrow = Instantiate(ThrowPrefab, pos, Quaternion.identity);
+
+		var rb = newthrow.GetComponent<Rigidbody>();
+		rb.isKinematic = false;
+		rb.AddForce(dir * throwForceMultiplier);
+		rb.AddTorque(new Vector3(UnityEngine.Random.Range(-throwTorqueMultiplier, throwTorqueMultiplier), UnityEngine.Random.Range(-throwTorqueMultiplier, throwTorqueMultiplier), UnityEngine.Random.Range(-throwTorqueMultiplier, throwTorqueMultiplier)));
+	}
+
 	public enum InteractionType
 	{
 		None,
@@ -90,6 +111,7 @@ public class Interaction : MonoBehaviour
 		Food,
 		Chill,
 		Sleep,
-		Drink
+		Drink,
+		Work
 	}
 }

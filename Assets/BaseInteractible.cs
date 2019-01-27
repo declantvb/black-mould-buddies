@@ -167,6 +167,7 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	{
 		if (status != CurrentPlayer) return;
 
+		StopSFX(CurrentInteraction);
 		if (CurrentInteraction?.Continuous ?? false)
 		{
 			EndCleanupInteraction(status);
@@ -176,7 +177,6 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 			if (AudioFixing != null)
 				StartCoroutine(FadeOut(AudioFixing, 0.5f));
 		}
-		StopSFX(CurrentInteraction);
 		CurrentInteraction = null;
 		CurrentPlayer = null;
 	}
