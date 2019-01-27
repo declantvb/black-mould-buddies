@@ -74,6 +74,9 @@ public class Interaction : MonoBehaviour
 			case InteractionType.Drink:
 				status.removeStress(20);
 				break;
+			case InteractionType.Work:
+				status.household.paychecks++;
+				break;
 			case InteractionType.None:
 				break;
 			default:
@@ -89,6 +92,7 @@ public class Interaction : MonoBehaviour
 		Food,
 		Chill,
 		Sleep,
-		Drink
+		Drink,
+		Work
 	}
 }

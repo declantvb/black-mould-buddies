@@ -60,11 +60,7 @@ public class PlayerStatus : MonoBehaviour
             if (Random.value > 0.7f) needFood += 1;
             if (Random.value > 0.7f) needToilet += 1;
 
-            stress += stressRate;
-
-            var m = particles.main;
-            m.startColor = stressRate > 0 ? Color.red : Color.green;
-            particles.Emit(Mathf.Abs(stressRate));
+            removeStress(-stressRate);
 
             var stressLevel = Mathf.Clamp(Mathf.FloorToInt(stress / (float)(MAX_STRESS+1) * stressLevelFaces.Length), 0, stressLevelFaces.Length-1);
             face.sprite = stressLevelFaces[stressLevel];
@@ -85,5 +81,9 @@ public class PlayerStatus : MonoBehaviour
 		{
 			stress = 0;
 		}
+        
+        var m = particles.main;
+        m.startColor = amount < 0 ? Color.red : Color.green;
+        particles.Emit(Mathf.Abs(amount));
 	}
 }

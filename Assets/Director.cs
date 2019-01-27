@@ -12,6 +12,9 @@ public class Director : MonoBehaviour
 
 	public bool playing;
 
+	public bool notStarted = true;
+	public bool ended = false;
+
 	void Start()
 	{
 		Interactibles = GameObject.FindObjectsOfType<MonoBehaviour>().OfType<BaseInteractible>().Where(x => x.Breakable).ToArray();
@@ -20,11 +23,19 @@ public class Director : MonoBehaviour
 	}
 
 	private void Update() {
-		if (Input.GetButtonDown("Fire1") && Time.timeScale < 0.1f)
+		if (Input.GetButtonDown("Fire1") && notStarted)
 		{
 			Time.timeScale = 1;
 			playing = true;
+			notStarted = false;
 		}
+	}
+
+	public void Evict() 
+	{
+		ended = true;
+		playing = false;
+		Time.timeScale = 0;
 	}
 
 	void FixedUpdate()
