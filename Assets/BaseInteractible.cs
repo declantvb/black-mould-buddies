@@ -23,6 +23,7 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	public AudioSource AudioBreak;
 	public AudioSource AudioFixing;
 	public AudioSource AudioPee;
+	public AudioSource AudioShower;
 
 	//private MeshRenderer[] myRenderers;
 	private Interaction[] interactions;
@@ -94,6 +95,10 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 				{
 					if (AudioPee != null)
 						AudioPee.Play();
+				}else if (CurrentInteraction.Name == "Wash")
+				{
+					if(AudioShower != null)
+						AudioShower.Play();
 				}
 			}
 			else
@@ -182,6 +187,8 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	{
 		if (inter.Name == "Pee" && AudioPee != null)
 			StartCoroutine(FadeOut(AudioPee, 0.5f));
+		if (inter.Name == "Wash" && AudioShower != null)
+			StartCoroutine(FadeOut(AudioShower, 0.5f));
 
 	}
 }
