@@ -139,6 +139,7 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 		CurrentInteraction.ResetToDefaults();
 		CurrentInteraction = null;
 		CurrentPlayer = null;
+		interactionTimeout = 0;
 	}
 
 	public virtual void Break()
