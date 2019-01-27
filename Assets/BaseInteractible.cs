@@ -22,6 +22,7 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 	public Transform lockPosition;
 	public AudioSource AudioBreak;
 	public AudioSource AudioFixing;
+	public AudioSource AudioPee;
 
 	//private MeshRenderer[] myRenderers;
 	private Interaction[] interactions;
@@ -40,9 +41,6 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 		household = FindObjectOfType<Household>();
 		ps = GetComponentInChildren<ParticleSystem>();
 		ps?.gameObject.SetActive(false);
-
-		// Break everything for testing
-		//		Break();
 	}
 
 	void Update()
@@ -92,6 +90,10 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 				{
 					if (AudioFixing != null)
 						AudioFixing.Play();
+				} else if (CurrentInteraction.Name == "Pee")
+				{
+					if (AudioPee != null)
+						AudioPee.Play();
 				}
 			}
 			else
@@ -128,6 +130,7 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 			if (AudioFixing != null)
 				StartCoroutine(FadeOut(AudioFixing, 0.5f));
 		}
+		StopSFX(CurrentInteraction);
 		CurrentInteraction.ResetToDefaults();
 		CurrentInteraction = null;
 		CurrentPlayer = null;
@@ -154,12 +157,10 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 		}
 		else if (CurrentInteraction.Name == "Fix")
 		{
-			if (AudioBreak != null)
-				StartCoroutine(FadeOut(AudioBreak, 1f));
-
 			if (AudioFixing != null)
 				StartCoroutine(FadeOut(AudioFixing, 0.5f));
 		}
+		StopSFX(CurrentInteraction);
 		CurrentInteraction = null;
 		CurrentPlayer = null;
 	}
@@ -175,5 +176,12 @@ public class BaseInteractible : MonoBehaviour, IInteractible
 		}
 		audioSource.Stop();
 		audioSource.volume = startVolume;
+	}
+
+	private void StopSFX(Interaction inter)
+	{
+		if (inter.Name == "Pee" && AudioPee != null)
+			StartCoroutine(FadeOut(AudioPee, 0.5f));
+
 	}
 }
